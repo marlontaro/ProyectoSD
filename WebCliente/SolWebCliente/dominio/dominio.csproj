@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B39C0466-4583-48E5-B972-AE05BE057C21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>it.dominio</RootNamespace>
+    <AssemblyName>it.dominio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alumno.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnoPeriodo.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogoEstado.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="DbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripcion.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="InscripcionDetalle.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Padre.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Periodo.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Persona.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Personal.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seccion.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Ubigeo.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <OpenAccessDeploy Include="DbContext.rlinq">
+      <Generator>MetaModelCodeGenerator</Generator>
+      <LastGenOutput>DbContext.cs</LastGenOutput>
+    </OpenAccessDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DbContext.rlinq.diagram">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
+</Project>

@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="DbContext" namespace="it.dominio" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="DbContext" backend="mssql" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="it.dominio" default="true">
+      <orm:class name="Usuario" uniqueId="8e910e5a-3800-46ea-ac70-6e1d0ceb1a0d">
+        <orm:table name="Usuario" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoUsuario" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoUsuario" property="CodigoUsuario" behavior="readwrite" uniqueId="00ad9260-6373-49f3-9c49-e0c54d728ada" type="System.Int32">
+          <orm:column name="CodigoUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="08895baf-6429-4f89-babb-60b97b696db0" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_contrasenia" property="Contrasenia" behavior="readwrite" uniqueId="6f43cd24-0417-4071-8fee-0fa44feba63a" type="System.String">
+          <orm:column name="Contrasenia" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="956260bc-1cad-433f-8e51-cbc915eb1c2a" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_persona" property="Persona" behavior="readwrite" uniqueId="baa44514-e788-4315-913d-72b9ba518744" type="it.dominio.Persona">
+          <orm:reference uniqueId="e955328d-be97-4ae7-aaf5-ec789b292152">
+            <orm:sharedfield name="_codigoPersona" target-class="it.dominio.Persona" target-field="_codigoPersona" />
+            <orm:constraint name="R_4" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_evaluacions" property="Evaluacions" behavior="readwrite" uniqueId="8a416ef6-51e0-4184-af9d-8487671c9983" type="it.dominio.Evaluacion">
+          <orm:collection element-class="it.dominio.Evaluacion" inverse-field="_usuario" order-by="" uniqueId="7abf541d-58e9-4ec3-a95a-2b128ef77bfc" />
+        </orm:field>
+        <orm:field name="_perfils" property="Perfils" behavior="readwrite" uniqueId="c34c9f11-10ab-4cab-8f5d-fd368ab5b7c7" type="it.dominio.Perfil">
+          <orm:join-table uniqueId="0c083cb5-ef4b-4692-b3c6-40334012379c" association-name="UsuariosHavePerfils">
+            <orm:table name="UsuarioPerfil" join-table="true" />
+            <orm:owner>
+              <orm:constraint name="R_5" destination-table="Usuario">
+                <orm:column name="CodigoUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="it.dominio.Usuario" target-field="_codigoUsuario" />
+              </orm:constraint>
+            </orm:owner>
+            <orm:value>
+              <orm:constraint name="R_6" destination-table="Perfil">
+                <orm:column name="CodigoPerfil" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="it.dominio.Perfil" target-field="_codigoPerfil" />
+              </orm:constraint>
+            </orm:value>
+          </orm:join-table>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Ubigeo" uniqueId="41b6d364-ca18-47e7-927f-26afd1938d70">
+        <orm:table name="Ubigeo" />
+        <orm:identity>
+          <orm:single-field field-name="_codigoUbigeo" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoUbigeo" property="CodigoUbigeo" behavior="readwrite" uniqueId="8584a9c3-def8-4bbf-9d2b-ca243f1d7147" type="System.String">
+          <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" primary-key="true" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="cba399fb-7195-454f-a03f-7b6dd2635513" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_padres" property="Padres" behavior="readwrite" uniqueId="d5f4ab31-fd33-4339-b6b7-8c10798df937" type="it.dominio.Padre">
+          <orm:collection element-class="it.dominio.Padre" inverse-field="_ubigeo" order-by="" uniqueId="fb8095f3-df07-4528-a09f-dce4c3956685" />
+        </orm:field>
+        <orm:field name="_inscripcions" property="Inscripcions" behavior="readwrite" uniqueId="f622851e-ffae-48bc-b36b-c31accd6a93a" type="it.dominio.Inscripcion">
+          <orm:collection element-class="it.dominio.Inscripcion" inverse-field="_ubigeo" order-by="" uniqueId="01a631d6-136d-4441-9704-c36349a96b98" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Seccion" uniqueId="5cbd8e9b-1761-4798-856d-a7c8cfa9f68a">
+        <orm:table name="Seccion" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoSeccion" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoSeccion" property="CodigoSeccion" behavior="readwrite" uniqueId="9301fcd6-7ed3-426e-9afb-af6acd4507c6" type="System.Int32">
+          <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="2ad817c8-f2e0-4e30-ab6b-4929c679ab26" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_educacion" property="Educacion" behavior="readwrite" uniqueId="421562d9-b60d-4196-a45a-27cfcb57ca10" type="System.Int32">
+          <orm:column name="Educacion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_inscripcionDetalles" property="InscripcionDetalles" behavior="readwrite" uniqueId="1ad80429-f5a0-486d-b759-4258813ae7fc" type="it.dominio.InscripcionDetalle">
+          <orm:collection element-class="it.dominio.InscripcionDetalle" inverse-field="_seccion" order-by="" uniqueId="29f74980-2a87-44e3-818b-54281ff11d42" />
+        </orm:field>
+        <orm:field name="_alumnoPeriodos" property="AlumnoPeriodos" behavior="readwrite" uniqueId="7c535767-99de-4613-8853-8c75092282a3" type="it.dominio.AlumnoPeriodo">
+          <orm:collection element-class="it.dominio.AlumnoPeriodo" inverse-field="_seccion" order-by="" uniqueId="b4140e72-8bca-4d41-af4f-68b9ab04d922" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Personal" uniqueId="326f1f75-e15c-4633-8c79-4160b3433c77">
+        <orm:table name="Personal" />
+        <orm:identity>
+          <orm:single-field field-name="_codigoPersona" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="771a9ca6-b60c-4868-bdfc-74d098aefd22" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_cargo" property="Cargo" behavior="readwrite" uniqueId="289aa4e8-f4bd-421c-9395-57467473296c" type="System.String">
+          <orm:column name="Cargo" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_persona" property="Persona" behavior="readwrite" uniqueId="3d38079f-f598-491c-b13c-7ec829847ff4" type="it.dominio.Persona">
+          <orm:reference uniqueId="270cb1e9-9494-4fa0-950a-70e04995fbc4">
+            <orm:sharedfield name="_codigoPersona" target-class="it.dominio.Persona" target-field="_codigoPersona" />
+            <orm:constraint name="R_3" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Persona" uniqueId="59fda685-470e-482b-8fad-aacf83728124">
+        <orm:table name="Persona" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoPersona" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="4fbb3403-3077-41f4-b30c-092731e27b21" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="67329285-1681-4fad-95db-5b98beb5f66e" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoPaterno" property="ApellidoPaterno" behavior="readwrite" uniqueId="5d8a14ee-ffa8-4da3-a1b3-df38db618c09" type="System.String">
+          <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_correo" property="Correo" behavior="readwrite" uniqueId="aef1e9f9-06a8-4b17-9814-daaf65245cd7" type="System.String">
+          <orm:column name="Correo" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoMaterno" property="ApellidoMaterno" behavior="readwrite" uniqueId="663e7fc0-ef41-4025-9567-54da0f6f928f" type="System.String">
+          <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_usuarios" property="Usuarios" behavior="readwrite" uniqueId="96868246-dd92-48d9-b921-2329373f0354" type="it.dominio.Usuario">
+          <orm:collection element-class="it.dominio.Usuario" inverse-field="_persona" order-by="" uniqueId="e955328d-be97-4ae7-aaf5-ec789b292152" />
+        </orm:field>
+        <orm:field name="_personal" property="Personal" behavior="readwrite" uniqueId="23b74c8f-8c93-43a6-aa3c-690616832682" type="it.dominio.Personal">
+          <orm:inversereference inverse-field="_persona" uniqueId="270cb1e9-9494-4fa0-950a-70e04995fbc4" />
+        </orm:field>
+        <orm:field name="_padre" property="Padre" behavior="readwrite" uniqueId="ecc4c329-18c8-4560-bd05-aea01b4315f0" type="it.dominio.Padre">
+          <orm:inversereference inverse-field="_persona" uniqueId="f3173368-f29c-44e5-9829-7ee98466b058" />
+        </orm:field>
+        <orm:field name="_alumno" property="Alumno" behavior="readwrite" uniqueId="0a6f2feb-5a44-4241-b74b-caf979f89ec3" type="it.dominio.Alumno">
+          <orm:inversereference inverse-field="_persona" uniqueId="7c1d2c79-dbbd-41eb-934e-bca4ce62d4e0" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Periodo" uniqueId="15b3f54c-2cca-45d4-8813-a143a0d0ed17">
+        <orm:table name="Periodo" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoPeriodo" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPeriodo" property="CodigoPeriodo" behavior="readwrite" uniqueId="1ce76846-5b1c-441b-a23b-5559d39fcf51" type="System.Int32">
+          <orm:column name="CodigoPeriodo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_anio" property="Anio" behavior="readwrite" uniqueId="899518dd-0a2e-43dc-a594-e52c14f2ad33" type="System.Int32">
+          <orm:column name="Anio" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_alumnoPeriodos" property="AlumnoPeriodos" behavior="readwrite" uniqueId="f7eb873d-a245-49b5-88d0-38519639d92a" type="it.dominio.AlumnoPeriodo">
+          <orm:collection element-class="it.dominio.AlumnoPeriodo" inverse-field="_periodo" order-by="" uniqueId="04a64a05-e8f2-43f5-a973-454486374943" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Perfil" uniqueId="35ef67c8-025a-4157-ab8d-8050aeb8701a">
+        <orm:table name="Perfil" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoPerfil" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPerfil" property="CodigoPerfil" behavior="readwrite" uniqueId="b79faa00-e340-4a81-ab0e-e9fbe7913eb9" type="System.Int32">
+          <orm:column name="CodigoPerfil" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="64fb1728-9278-4f63-b347-4c1a9f812bb5" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_usuarios" property="Usuarios" behavior="readwrite" uniqueId="cc600fb7-3f73-48da-b2a1-f5080e2d18fb" type="it.dominio.Usuario">
+          <orm:collection element-class="it.dominio.Usuario" inverse-field="_perfils" order-by="" uniqueId="0c083cb5-ef4b-4692-b3c6-40334012379c" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Padre" uniqueId="3ac041b2-cc6f-46b6-8a6d-1b4be97350e1">
+        <orm:table name="Padre" />
+        <orm:identity>
+          <orm:single-field field-name="_codigoPersona" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="4c01328e-891a-4272-ac34-bc960bacbc89" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_dNI" property="DNI" behavior="readwrite" uniqueId="5d40b908-c71d-45a2-896c-177771b8f9f2" type="System.String">
+          <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_direccion" property="Direccion" behavior="readwrite" uniqueId="a5b627a2-6f35-4881-9fc0-00dd3ab51d09" type="System.String">
+          <orm:column name="Direccion" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_codigoUbigeo" property="CodigoUbigeo" behavior="readwrite" uniqueId="6a85ae0e-5e85-4e44-96ab-382ec68489fd" type="System.String">
+          <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_tipo" property="Tipo" behavior="readwrite" uniqueId="157d560e-a43f-4c30-9c46-ef23a59e1a0c" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Tipo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_persona" property="Persona" behavior="readwrite" uniqueId="89745c72-a8ae-4ff5-b143-005fda66ff32" type="it.dominio.Persona">
+          <orm:reference uniqueId="f3173368-f29c-44e5-9829-7ee98466b058">
+            <orm:sharedfield name="_codigoPersona" target-class="it.dominio.Persona" target-field="_codigoPersona" />
+            <orm:constraint name="R_1" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_ubigeo" property="Ubigeo" behavior="readwrite" uniqueId="43aaf344-e2d2-41e1-bde9-fa9987fe95d3" type="it.dominio.Ubigeo">
+          <orm:reference uniqueId="fb8095f3-df07-4528-a09f-dce4c3956685">
+            <orm:sharedfield name="_codigoUbigeo" target-class="it.dominio.Ubigeo" target-field="_codigoUbigeo" />
+            <orm:constraint name="R_7" destination-table="Ubigeo" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="InscripcionDetalle" uniqueId="7316b3c9-3158-4a98-8c61-f96605985e59">
+        <orm:table name="InscripcionDetalle" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoInscripcionDetalle" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoInscripcion" property="CodigoInscripcion" behavior="readwrite" uniqueId="4c216cca-6f2b-4c60-887b-1563c5018417" type="System.Int32">
+          <orm:column name="CodigoInscripcion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoInscripcionDetalle" property="CodigoInscripcionDetalle" behavior="readwrite" uniqueId="ae46baa6-b715-414c-bfce-bb806ca7a94f" type="System.Int32">
+          <orm:column name="CodigoInscripcionDetalle" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="0f5dc841-c4c6-4fef-843f-e4c47df8cc85" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoPaterno" property="ApellidoPaterno" behavior="readwrite" uniqueId="3662612c-f171-42cf-9db5-d6124295720d" type="System.String">
+          <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoMaterno" property="ApellidoMaterno" behavior="readwrite" uniqueId="b88ff5cb-6c04-46e4-b095-d99e1b22a922" type="System.String">
+          <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_fechaNacimiento" property="FechaNacimiento" behavior="readwrite" uniqueId="b08d67ad-6d4e-4752-9a27-4668d61344e9" type="System.DateTime">
+          <orm:column name="FechaNacimiento" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_sexo" property="Sexo" behavior="readwrite" uniqueId="5499056c-7c4b-4840-9cf1-49fbc0c862b5" type="System.Int32">
+          <orm:column name="Sexo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoSeccion" property="CodigoSeccion" behavior="readwrite" uniqueId="e8b4a79e-e59b-4bfc-8b17-2e3ce8975d37" type="System.Int32">
+          <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_seccion" property="Seccion" behavior="readwrite" uniqueId="44469f27-cbde-4766-a02d-6083cea1e87f" type="it.dominio.Seccion">
+          <orm:reference uniqueId="29f74980-2a87-44e3-818b-54281ff11d42">
+            <orm:sharedfield name="_codigoSeccion" target-class="it.dominio.Seccion" target-field="_codigoSeccion" />
+            <orm:constraint name="R_15" destination-table="Seccion" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_inscripcion" property="Inscripcion" behavior="readwrite" uniqueId="bf6d1baf-45e8-4d50-9d91-627356cd4263" type="it.dominio.Inscripcion">
+          <orm:reference uniqueId="a3ec7a94-783e-4f78-abc5-e826da203a88">
+            <orm:sharedfield name="_codigoInscripcion" target-class="it.dominio.Inscripcion" target-field="_codigoInscripcion" />
+            <orm:constraint name="R_8" destination-table="Inscripcion" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_evaluacions" property="Evaluacions" behavior="readwrite" uniqueId="59a2c627-cb30-42e6-8367-c6340b965347" type="it.dominio.Evaluacion">
+          <orm:collection element-class="it.dominio.Evaluacion" inverse-field="_inscripcionDetalle" order-by="" uniqueId="ec66e9f4-10fb-4dbb-b029-3629166371ce" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Inscripcion" uniqueId="0b4bf8df-b862-40c0-b29a-7d3f11e8f91b">
+        <orm:table name="Inscripcion" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoInscripcion" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoInscripcion" property="CodigoInscripcion" behavior="readwrite" uniqueId="5bc936b8-6cac-4f41-9d3b-562bc7033eaf" type="System.Int32">
+          <orm:column name="CodigoInscripcion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_dNI" property="DNI" behavior="readwrite" uniqueId="d73b2c0e-5052-4efe-905f-1e3fd5e516d4" type="System.String">
+          <orm:column name="DNI" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_tipo" property="Tipo" behavior="readwrite" uniqueId="2376da7e-9f22-42d7-9495-5b46dc9c97b2" type="System.Int32">
+          <orm:column name="Tipo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="eaa3f418-5415-4088-a50c-0df83941122d" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoMaterno" property="ApellidoMaterno" behavior="readwrite" uniqueId="0c0485c1-8aae-40c1-8fde-7e9425e78e08" type="System.String">
+          <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_apellidoPaterno" property="ApellidoPaterno" behavior="readwrite" uniqueId="70b56987-a845-478a-9949-90c242784e84" type="System.String">
+          <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_fechaInscripcion" property="FechaInscripcion" behavior="readwrite" uniqueId="18850554-49e5-4ee7-9ce9-7342aeefa9f0" type="System.DateTime">
+          <orm:column name="FechaInscripcion" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_direccion" property="Direccion" behavior="readwrite" uniqueId="bd1a08ca-3c29-490f-af1e-c8f34598c04d" type="System.String">
+          <orm:column name="Direccion" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_codigoUbigeo" property="CodigoUbigeo" behavior="readwrite" uniqueId="4dd257f0-ad0b-41d7-b482-7e439f0f1e84" type="System.String">
+          <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_inscripcionDetalles" property="InscripcionDetalles" behavior="readwrite" uniqueId="93a0727e-6358-41be-8841-be9b558d025f" type="it.dominio.InscripcionDetalle">
+          <orm:collection element-class="it.dominio.InscripcionDetalle" inverse-field="_inscripcion" order-by="" uniqueId="a3ec7a94-783e-4f78-abc5-e826da203a88" />
+        </orm:field>
+        <orm:field name="_ubigeo" property="Ubigeo" behavior="readwrite" uniqueId="66b4f62b-429d-4a76-9287-d5f921d21048" type="it.dominio.Ubigeo">
+          <orm:reference uniqueId="01a631d6-136d-4441-9704-c36349a96b98">
+            <orm:sharedfield name="_codigoUbigeo" target-class="it.dominio.Ubigeo" target-field="_codigoUbigeo" />
+            <orm:constraint name="R_9" destination-table="Ubigeo" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Evaluacion" uniqueId="f711bcb8-3f2f-4516-947c-f8003d4cd487">
+        <orm:table name="Evaluacion" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoEvaluacion" />
+        </orm:identity>
+        <orm:concurrency strategy="backend" field-name="_hora">
+          <orm:column name="Hora" sql-type="timestamp" nullable="true" length="0" scale="0" backend-version="true" ado-type="Int64" />
+        </orm:concurrency>
+        <orm:field name="_codigoEvaluacion" property="CodigoEvaluacion" behavior="readwrite" uniqueId="edb5e66d-ed57-4864-bc00-8b3463bb6cc5" type="System.Int32">
+          <orm:column name="CodigoEvaluacion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_tipo" property="Tipo" behavior="readwrite" uniqueId="9200183b-2293-40a8-b1f1-a96b7493fa0e" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Tipo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_fecha" property="Fecha" behavior="readwrite" uniqueId="835a09fb-cb08-4c05-ad2d-186f0ea8bbf9" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Fecha" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_hora" property="Hora" behavior="readwrite" uniqueId="18cfa5f6-ae77-4fef-9e2f-e8479d22f658" type="System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Hora" sql-type="timestamp" nullable="true" length="0" scale="0" backend-version="true" ado-type="Int64" />
+        </orm:field>
+        <orm:field name="_evaluador" property="Evaluador" behavior="readwrite" uniqueId="b009cf24-b828-4679-95ee-0cbee0253aa8" type="System.String">
+          <orm:column name="Evaluador" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_respuesta" property="Respuesta" behavior="readwrite" uniqueId="456d65f8-3a2e-49e5-85a2-688662e1e249" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Respuesta" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_observacion" property="Observacion" behavior="readwrite" uniqueId="2b186312-aeac-48bf-ba73-237b09b40621" type="System.String">
+          <orm:column name="Observacion" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_codigoUsuario" property="CodigoUsuario" behavior="readwrite" uniqueId="ccaa594f-b7ed-4ce5-86d7-f897b75d92b1" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="CodigoUsuario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoInscripcionDetalle" property="CodigoInscripcionDetalle" behavior="readwrite" uniqueId="860d6129-3ba7-4bd7-b6fe-6761010a8111" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="CodigoInscripcionDetalle" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoAlumnoPeriodo" property="CodigoAlumnoPeriodo" behavior="readwrite" uniqueId="e7816f0e-0fe9-44f7-a36f-b965d6d81de8" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="CodigoAlumnoPeriodo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_usuario" property="Usuario" behavior="readwrite" uniqueId="4fc11256-1a00-46b9-9fbf-740f54acc2ba" type="it.dominio.Usuario">
+          <orm:reference uniqueId="7abf541d-58e9-4ec3-a95a-2b128ef77bfc">
+            <orm:sharedfield name="_codigoUsuario" target-class="it.dominio.Usuario" target-field="_codigoUsuario" />
+            <orm:constraint name="R_16" destination-table="Usuario" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_inscripcionDetalle" property="InscripcionDetalle" behavior="readwrite" uniqueId="dc5d6d42-7864-4e63-9ea3-246dd7cf80a7" type="it.dominio.InscripcionDetalle">
+          <orm:reference uniqueId="ec66e9f4-10fb-4dbb-b029-3629166371ce">
+            <orm:sharedfield name="_codigoInscripcionDetalle" target-class="it.dominio.InscripcionDetalle" target-field="_codigoInscripcionDetalle" />
+            <orm:constraint name="R_17" destination-table="InscripcionDetalle" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_alumnoPeriodo" property="AlumnoPeriodo" behavior="readwrite" uniqueId="117165d2-b871-480c-8368-4f10c98116eb" type="it.dominio.AlumnoPeriodo">
+          <orm:reference uniqueId="54de26a9-59a5-435a-9e0d-436edf72f0cc">
+            <orm:sharedfield name="_codigoAlumnoPeriodo" target-class="it.dominio.AlumnoPeriodo" target-field="_codigoAlumnoPeriodo" />
+            <orm:constraint name="R_18" destination-table="AlumnoPeriodo" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="CatalogoEstado" uniqueId="90055d41-401c-4d41-aaaa-71ddeb2f5c8a">
+        <orm:table name="CatalogoEstado" />
+        <orm:identity>
+          <orm:multiple-field>
+            <orm:single-field field-name="_codigoCatalogo" />
+            <orm:single-field field-name="_valorCatalgo" />
+          </orm:multiple-field>
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoCatalogo" property="CodigoCatalogo" behavior="readwrite" uniqueId="4536f9a2-2c07-4d6f-b18d-3e0cbaa3d0d7" type="System.Int32">
+          <orm:column name="CodigoCatalogo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_valorCatalgo" property="ValorCatalgo" behavior="readwrite" uniqueId="62d1fa93-15b4-42d2-bcec-f575e24b553c" type="System.Int32">
+          <orm:column name="ValorCatalgo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_nombre" property="Nombre" behavior="readwrite" uniqueId="673451c8-e2bb-46f4-9a5b-caef229fc25e" type="System.String">
+          <orm:column name="Nombre" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="AlumnoPeriodo" uniqueId="2dddd2d3-1095-4950-8663-c7a3a6dbe363">
+        <orm:table name="AlumnoPeriodo" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_codigoAlumnoPeriodo" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoAlumnoPeriodo" property="CodigoAlumnoPeriodo" behavior="readwrite" uniqueId="81154275-d937-4e98-8954-5b1d7aeba5fe" type="System.Int32">
+          <orm:column name="CodigoAlumnoPeriodo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="ebf331b7-557c-4147-aec4-cb8457b5bb71" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoPeriodo" property="CodigoPeriodo" behavior="readwrite" uniqueId="d163a5d9-536c-48a7-affc-4e5d2be8b8fb" type="System.Int32">
+          <orm:column name="CodigoPeriodo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_codigoSeccion" property="CodigoSeccion" behavior="readwrite" uniqueId="01dc70a8-138d-41d4-8be3-5cdf1979458c" type="System.Int32">
+          <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_estado" property="Estado" behavior="readwrite" uniqueId="e9a37201-ea24-4773-822f-a75b9c88c38e" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Estado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_evaluacions" property="Evaluacions" behavior="readwrite" uniqueId="aa825bb5-7716-43ca-b6c6-fd168acee67a" type="it.dominio.Evaluacion">
+          <orm:collection element-class="it.dominio.Evaluacion" inverse-field="_alumnoPeriodo" order-by="" uniqueId="54de26a9-59a5-435a-9e0d-436edf72f0cc" />
+        </orm:field>
+        <orm:field name="_alumno" property="Alumno" behavior="readwrite" uniqueId="6fbf1269-026d-42d1-8114-fc20c319149c" type="it.dominio.Alumno">
+          <orm:reference uniqueId="ee39c9d2-47af-432f-bfe9-46f00996908c">
+            <orm:sharedfield name="_codigoPersona" target-class="it.dominio.Alumno" target-field="_codigoPersona" />
+            <orm:constraint name="R_11" destination-table="Alumno" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_periodo" property="Periodo" behavior="readwrite" uniqueId="5fea0415-4821-430b-acd8-095e25473d02" type="it.dominio.Periodo">
+          <orm:reference uniqueId="04a64a05-e8f2-43f5-a973-454486374943">
+            <orm:sharedfield name="_codigoPeriodo" target-class="it.dominio.Periodo" target-field="_codigoPeriodo" />
+            <orm:constraint name="R_12" destination-table="Periodo" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_seccion" property="Seccion" behavior="readwrite" uniqueId="bb175767-0ca5-4c47-bbee-d0cc11ccfaf9" type="it.dominio.Seccion">
+          <orm:reference uniqueId="b4140e72-8bca-4d41-af4f-68b9ab04d922">
+            <orm:sharedfield name="_codigoSeccion" target-class="it.dominio.Seccion" target-field="_codigoSeccion" />
+            <orm:constraint name="R_14" destination-table="Seccion" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Alumno" uniqueId="96406b9c-c234-4e95-a756-1755e0bd8d86">
+        <orm:table name="Alumno" />
+        <orm:identity>
+          <orm:single-field field-name="_codigoPersona" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_codigoPersona" property="CodigoPersona" behavior="readwrite" uniqueId="769d18fe-421f-491f-ae98-b6f4e1d0f743" type="System.Int32">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_dNI" property="DNI" behavior="readwrite" uniqueId="33153d36-0e79-49df-b9bf-ea6b881a3a90" type="System.String">
+          <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_fechaNacimiento" property="FechaNacimiento" behavior="readwrite" uniqueId="ea207889-af6b-471c-a28b-68808b49dab2" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="FechaNacimiento" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_sexo" property="Sexo" behavior="readwrite" uniqueId="3b9b224f-26bf-4e38-8e0d-a2805d1895ba" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="Sexo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_alumnoPeriodos" property="AlumnoPeriodos" behavior="readwrite" uniqueId="c5a1f00e-8cd9-42f6-b41e-98dc0d7c29c3" type="it.dominio.AlumnoPeriodo">
+          <orm:collection element-class="it.dominio.AlumnoPeriodo" inverse-field="_alumno" order-by="" uniqueId="ee39c9d2-47af-432f-bfe9-46f00996908c" />
+        </orm:field>
+        <orm:field name="_persona" property="Persona" behavior="readwrite" uniqueId="d572437a-9f51-48fa-a3e2-222f8cc0ed32" type="it.dominio.Persona">
+          <orm:reference uniqueId="7c1d2c79-dbbd-41eb-934e-bca4ce62d4e0">
+            <orm:sharedfield name="_codigoPersona" target-class="it.dominio.Persona" target-field="_codigoPersona" />
+            <orm:constraint name="R_2" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="UsuarioPerfil" join-table="true">
+        <orm:column name="CodigoUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="CodigoPerfil" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:constraint name="R_5" destination-table="Usuario">
+          <orm:column name="CodigoUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_6" destination-table="Perfil">
+          <orm:column name="CodigoPerfil" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Usuario">
+        <orm:column name="CodigoUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Contrasenia" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_4" destination-table="Persona">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Ubigeo">
+        <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" primary-key="true" ado-type="StringVariableLength" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+      <orm:table name="Seccion">
+        <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Educacion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="Personal">
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="Cargo" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:constraint name="R_3" destination-table="Persona">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Persona">
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Correo" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+      <orm:table name="Periodo">
+        <orm:column name="CodigoPeriodo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Anio" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="Perfil">
+        <orm:column name="CodigoPerfil" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+      <orm:table name="Padre">
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Direccion" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Tipo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_1" destination-table="Persona">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_7" destination-table="Ubigeo">
+          <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="InscripcionDetalle">
+        <orm:column name="CodigoInscripcion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoInscripcionDetalle" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="FechaNacimiento" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Sexo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_15" destination-table="Seccion">
+          <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_8" destination-table="Inscripcion">
+          <orm:column name="CodigoInscripcion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Inscripcion">
+        <orm:column name="CodigoInscripcion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="DNI" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Tipo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoMaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="ApellidoPaterno" sql-type="varchar" nullable="false" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="FechaInscripcion" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Direccion" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        <orm:constraint name="R_9" destination-table="Ubigeo">
+          <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Evaluacion">
+        <orm:column name="CodigoEvaluacion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Tipo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Fecha" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Hora" sql-type="timestamp" nullable="true" length="0" scale="0" backend-version="true" ado-type="Int64" />
+        <orm:column name="Evaluador" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="Respuesta" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Observacion" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="CodigoUsuario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoInscripcionDetalle" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoAlumnoPeriodo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_16" destination-table="Usuario">
+          <orm:column name="CodigoUsuario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_17" destination-table="InscripcionDetalle">
+          <orm:column name="CodigoInscripcionDetalle" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_18" destination-table="AlumnoPeriodo">
+          <orm:column name="CodigoAlumnoPeriodo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="CatalogoEstado">
+        <orm:column name="CodigoCatalogo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="ValorCatalgo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="Nombre" sql-type="varchar" nullable="true" length="300" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+      <orm:table name="AlumnoPeriodo">
+        <orm:column name="CodigoAlumnoPeriodo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoPeriodo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Estado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_11" destination-table="Alumno">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_12" destination-table="Periodo">
+          <orm:column name="CodigoPeriodo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="R_14" destination-table="Seccion">
+          <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Alumno">
+        <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="FechaNacimiento" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Sexo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="R_2" destination-table="Persona">
+          <orm:column name="CodigoPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+      <orm:source-strategy>Property</orm:source-strategy>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>BDAlumnoConexion</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>Data Source=MARLONCORDOVA\SQLEXPRESS;Initial Catalog=BDAlumno;Integrated Security=True</AppConfigConnectionString>
+    <InitialCatalog>BDAlumno</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="8e910e5a-3800-46ea-ac70-6e1d0ceb1a0d" name="Usuario" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="00ad9260-6373-49f3-9c49-e0c54d728ada" name="CodigoUsuario" type="Int32" label="CodigoUsuario : Int32" kind="Persistent" identity="true" fieldName="_codigoUsuario" />
+      <Property Id="956260bc-1cad-433f-8e51-cbc915eb1c2a" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" fieldName="_codigoPersona" />
+      <Property Id="6f43cd24-0417-4071-8fee-0fa44feba63a" name="Contrasenia" label="Contrasenia : String" kind="Persistent" fieldName="_contrasenia" />
+      <Property Id="08895baf-6429-4f89-babb-60b97b696db0" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <AssociationTargets>
+        <Association Id="e955328d-be97-4ae7-aaf5-ec789b292152" SourceMultiplicity="One" name="UsuarioHasPersona">
+          <DomainClassMoniker name="/DbContext/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="ee18a23b-efa5-4085-9bac-8359d8088559">
+              <NavigationalPropertyMoniker name="/DbContext/Persona/Usuarios" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="19a74bf1-ed90-4d99-b6a4-75d9bbc1030c">
+              <NavigationalPropertyMoniker name="/DbContext/Usuario/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="0c083cb5-ef4b-4692-b3c6-40334012379c" name="UsuariosHavePerfils">
+          <DomainClassMoniker name="/DbContext/Perfil" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="84b08bfb-a160-4016-8e4c-a95d1fab83fc">
+              <NavigationalPropertyMoniker name="/DbContext/Perfil/Usuarios" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4c1060c3-cba0-45c7-87c9-7cd1cef70976">
+              <NavigationalPropertyMoniker name="/DbContext/Usuario/Perfils" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6cf73996-61f9-45d0-953a-1b3d639eb4fb">
+          <NavigationalProperty Id="baa44514-e788-4315-913d-72b9ba518744" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="_persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a20e1c42-bc6d-40e1-8244-3a799c5e7ef6">
+          <NavigationalProperty Id="8a416ef6-51e0-4184-af9d-8487671c9983" name="Evaluacions" type="IList&lt;Evaluacion&gt;" label="Evaluacions : IList&lt;Evaluacion&gt;" nullable="true" kind="Persistent" fieldName="_evaluacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0bc062a6-9b40-4e17-be9e-f71b84a12350">
+          <NavigationalProperty Id="c34c9f11-10ab-4cab-8f5d-fd368ab5b7c7" name="Perfils" type="IList&lt;Perfil&gt;" label="Perfils : IList&lt;Perfil&gt;" nullable="true" kind="Persistent" fieldName="_perfils" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="41b6d364-ca18-47e7-927f-26afd1938d70" name="Ubigeo" namespace="it.dominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="8584a9c3-def8-4bbf-9d2b-ca243f1d7147" name="CodigoUbigeo" label="CodigoUbigeo : String" kind="Persistent" identity="true" fieldName="_codigoUbigeo" />
+      <Property Id="cba399fb-7195-454f-a03f-7b6dd2635513" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="efa1752d-53ed-468f-ba45-9b324c71d7d7">
+          <NavigationalProperty Id="d5f4ab31-fd33-4339-b6b7-8c10798df937" name="Padres" type="IList&lt;Padre&gt;" label="Padres : IList&lt;Padre&gt;" nullable="true" kind="Persistent" fieldName="_padres" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1e895a25-a3f4-4c2a-8787-35ee73032c1f">
+          <NavigationalProperty Id="f622851e-ffae-48bc-b36b-c31accd6a93a" name="Inscripcions" type="IList&lt;Inscripcion&gt;" label="Inscripcions : IList&lt;Inscripcion&gt;" nullable="true" kind="Persistent" fieldName="_inscripcions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="5cbd8e9b-1761-4798-856d-a7c8cfa9f68a" name="Seccion" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="9301fcd6-7ed3-426e-9afb-af6acd4507c6" name="CodigoSeccion" type="Int32" label="CodigoSeccion : Int32" kind="Persistent" identity="true" fieldName="_codigoSeccion" />
+      <Property Id="421562d9-b60d-4196-a45a-27cfcb57ca10" name="Educacion" type="Int32" label="Educacion : Int32" kind="Persistent" fieldName="_educacion" />
+      <Property Id="2ad817c8-f2e0-4e30-ab6b-4929c679ab26" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ea6816e1-69bf-479f-9f6f-f7b08eeecb8c">
+          <NavigationalProperty Id="1ad80429-f5a0-486d-b759-4258813ae7fc" name="InscripcionDetalles" type="IList&lt;InscripcionDetalle&gt;" label="InscripcionDetalles : IList&lt;InscripcionDetalle&gt;" nullable="true" kind="Persistent" fieldName="_inscripcionDetalles" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ab1c05a5-04ef-4786-bddd-7cdfed6d3f3b">
+          <NavigationalProperty Id="7c535767-99de-4613-8853-8c75092282a3" name="AlumnoPeriodos" type="IList&lt;AlumnoPeriodo&gt;" label="AlumnoPeriodos : IList&lt;AlumnoPeriodo&gt;" nullable="true" kind="Persistent" fieldName="_alumnoPeriodos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="326f1f75-e15c-4633-8c79-4160b3433c77" name="Personal" namespace="it.dominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="771a9ca6-b60c-4868-bdfc-74d098aefd22" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" identity="true" fieldName="_codigoPersona" />
+      <Property Id="289aa4e8-f4bd-421c-9395-57467473296c" name="Cargo" label="Cargo : String" kind="Persistent" fieldName="_cargo" />
+      <AssociationTargets>
+        <Association Id="270cb1e9-9494-4fa0-950a-70e04995fbc4" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="PersonalHasPersona">
+          <DomainClassMoniker name="/DbContext/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="389b60a1-40e8-4f47-b59f-d50d9767adf4">
+              <NavigationalPropertyMoniker name="/DbContext/Persona/Personal" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b80c90f7-821f-4416-b902-ef50d7a3802f">
+              <NavigationalPropertyMoniker name="/DbContext/Personal/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ab1687e3-c00a-45f5-a7b3-739715c459a5">
+          <NavigationalProperty Id="3d38079f-f598-491c-b13c-7ec829847ff4" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="_persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="59fda685-470e-482b-8fad-aacf83728124" name="Persona" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="4fbb3403-3077-41f4-b30c-092731e27b21" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" identity="true" fieldName="_codigoPersona" />
+      <Property Id="663e7fc0-ef41-4025-9567-54da0f6f928f" name="ApellidoMaterno" label="ApellidoMaterno : String" kind="Persistent" fieldName="_apellidoMaterno" />
+      <Property Id="5d8a14ee-ffa8-4da3-a1b3-df38db618c09" name="ApellidoPaterno" label="ApellidoPaterno : String" kind="Persistent" fieldName="_apellidoPaterno" />
+      <Property Id="aef1e9f9-06a8-4b17-9814-daaf65245cd7" name="Correo" label="Correo : String" kind="Persistent" fieldName="_correo" />
+      <Property Id="67329285-1681-4fad-95db-5b98beb5f66e" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="69c54540-ffa0-4458-bc16-f1c03c42e81c">
+          <NavigationalProperty Id="96868246-dd92-48d9-b921-2329373f0354" name="Usuarios" type="IList&lt;Usuario&gt;" label="Usuarios : IList&lt;Usuario&gt;" nullable="true" kind="Persistent" fieldName="_usuarios" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="3a95e13f-ca2c-4b61-a66b-8888f730e115">
+          <NavigationalProperty Id="23b74c8f-8c93-43a6-aa3c-690616832682" name="Personal" type="Personal" label="Personal : Personal" nullable="true" kind="Persistent" fieldName="_personal" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="05f0072b-98e1-4b61-8392-f94d9f3b4bf5">
+          <NavigationalProperty Id="ecc4c329-18c8-4560-bd05-aea01b4315f0" name="Padre" type="Padre" label="Padre : Padre" nullable="true" kind="Persistent" fieldName="_padre" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="eb9d094c-57ba-4176-9c29-8833d83b1988">
+          <NavigationalProperty Id="0a6f2feb-5a44-4241-b74b-caf979f89ec3" name="Alumno" type="Alumno" label="Alumno : Alumno" nullable="true" kind="Persistent" fieldName="_alumno" isDependent="false" isManaged="true" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="15b3f54c-2cca-45d4-8813-a143a0d0ed17" name="Periodo" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="1ce76846-5b1c-441b-a23b-5559d39fcf51" name="CodigoPeriodo" type="Int32" label="CodigoPeriodo : Int32" kind="Persistent" identity="true" fieldName="_codigoPeriodo" />
+      <Property Id="899518dd-0a2e-43dc-a594-e52c14f2ad33" name="Anio" type="Int32" label="Anio : Int32" kind="Persistent" fieldName="_anio" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="62389530-e4aa-49b7-ba8f-fbb9e879ce1a">
+          <NavigationalProperty Id="f7eb873d-a245-49b5-88d0-38519639d92a" name="AlumnoPeriodos" type="IList&lt;AlumnoPeriodo&gt;" label="AlumnoPeriodos : IList&lt;AlumnoPeriodo&gt;" nullable="true" kind="Persistent" fieldName="_alumnoPeriodos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="35ef67c8-025a-4157-ab8d-8050aeb8701a" name="Perfil" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="b79faa00-e340-4a81-ab0e-e9fbe7913eb9" name="CodigoPerfil" type="Int32" label="CodigoPerfil : Int32" kind="Persistent" identity="true" fieldName="_codigoPerfil" />
+      <Property Id="64fb1728-9278-4f63-b347-4c1a9f812bb5" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="d22f5f53-746f-43b8-94bc-cc9fc08de27a">
+          <NavigationalProperty Id="cc600fb7-3f73-48da-b2a1-f5080e2d18fb" name="Usuarios" type="IList&lt;Usuario&gt;" label="Usuarios : IList&lt;Usuario&gt;" nullable="true" kind="Persistent" fieldName="_usuarios" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="3ac041b2-cc6f-46b6-8a6d-1b4be97350e1" name="Padre" namespace="it.dominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="4c01328e-891a-4272-ac34-bc960bacbc89" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" identity="true" fieldName="_codigoPersona" />
+      <Property Id="6a85ae0e-5e85-4e44-96ab-382ec68489fd" name="CodigoUbigeo" label="CodigoUbigeo : String" kind="Persistent" fieldName="_codigoUbigeo" />
+      <Property Id="a5b627a2-6f35-4881-9fc0-00dd3ab51d09" name="Direccion" label="Direccion : String" kind="Persistent" fieldName="_direccion" />
+      <Property Id="5d40b908-c71d-45a2-896c-177771b8f9f2" name="DNI" label="DNI : String" kind="Persistent" fieldName="_dNI" />
+      <Property Id="157d560e-a43f-4c30-9c46-ef23a59e1a0c" name="Tipo" type="Int32" label="Tipo : Int32" nullable="true" kind="Persistent" fieldName="_tipo" />
+      <AssociationTargets>
+        <Association Id="f3173368-f29c-44e5-9829-7ee98466b058" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="PadreHasPersona">
+          <DomainClassMoniker name="/DbContext/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="a12f9fdf-920f-426a-a941-c92aea8fecd4">
+              <NavigationalPropertyMoniker name="/DbContext/Persona/Padre" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5555827c-231b-4bcf-8398-1051832ea0a4">
+              <NavigationalPropertyMoniker name="/DbContext/Padre/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="fb8095f3-df07-4528-a09f-dce4c3956685" SourceMultiplicity="One" name="PadreHasUbigeo">
+          <DomainClassMoniker name="/DbContext/Ubigeo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="88e7d0c3-a5ba-4b32-99b4-0c5efab9d5b4">
+              <NavigationalPropertyMoniker name="/DbContext/Ubigeo/Padres" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="94a0d719-1b66-46ad-b57e-a5f081f62897">
+              <NavigationalPropertyMoniker name="/DbContext/Padre/Ubigeo" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="2b5271df-503c-49f2-a969-fd8cadbd07d0">
+          <NavigationalProperty Id="89745c72-a8ae-4ff5-b143-005fda66ff32" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="_persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="01068707-cbaa-470a-96a4-93d63986f77f">
+          <NavigationalProperty Id="43aaf344-e2d2-41e1-bde9-fa9987fe95d3" name="Ubigeo" type="Ubigeo" label="Ubigeo : Ubigeo" nullable="true" kind="Persistent" fieldName="_ubigeo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="7316b3c9-3158-4a98-8c61-f96605985e59" name="InscripcionDetalle" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="ae46baa6-b715-414c-bfce-bb806ca7a94f" name="CodigoInscripcionDetalle" type="Int32" label="CodigoInscripcionDetalle : Int32" kind="Persistent" identity="true" fieldName="_codigoInscripcionDetalle" />
+      <Property Id="b88ff5cb-6c04-46e4-b095-d99e1b22a922" name="ApellidoMaterno" label="ApellidoMaterno : String" kind="Persistent" fieldName="_apellidoMaterno" />
+      <Property Id="3662612c-f171-42cf-9db5-d6124295720d" name="ApellidoPaterno" label="ApellidoPaterno : String" kind="Persistent" fieldName="_apellidoPaterno" />
+      <Property Id="4c216cca-6f2b-4c60-887b-1563c5018417" name="CodigoInscripcion" type="Int32" label="CodigoInscripcion : Int32" kind="Persistent" fieldName="_codigoInscripcion" />
+      <Property Id="e8b4a79e-e59b-4bfc-8b17-2e3ce8975d37" name="CodigoSeccion" type="Int32" label="CodigoSeccion : Int32" kind="Persistent" fieldName="_codigoSeccion" />
+      <Property Id="b08d67ad-6d4e-4752-9a27-4668d61344e9" name="FechaNacimiento" type="DateTime" label="FechaNacimiento : DateTime" kind="Persistent" fieldName="_fechaNacimiento" />
+      <Property Id="0f5dc841-c4c6-4fef-843f-e4c47df8cc85" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <Property Id="5499056c-7c4b-4840-9cf1-49fbc0c862b5" name="Sexo" type="Int32" label="Sexo : Int32" kind="Persistent" fieldName="_sexo" />
+      <AssociationTargets>
+        <Association Id="29f74980-2a87-44e3-818b-54281ff11d42" SourceMultiplicity="One" name="InscripcionDetalleHasSeccion">
+          <DomainClassMoniker name="/DbContext/Seccion" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="80b11dc5-faf6-4e26-953a-cb38ebd47ae3">
+              <NavigationalPropertyMoniker name="/DbContext/Seccion/InscripcionDetalles" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="74829930-414f-4dba-8678-4cb264eb9da9">
+              <NavigationalPropertyMoniker name="/DbContext/InscripcionDetalle/Seccion" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="a3ec7a94-783e-4f78-abc5-e826da203a88" SourceMultiplicity="One" name="InscripcionDetalleHasInscripcion">
+          <DomainClassMoniker name="/DbContext/Inscripcion" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="e414100d-517a-4092-b063-56131fe4624b">
+              <NavigationalPropertyMoniker name="/DbContext/Inscripcion/InscripcionDetalles" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e0060de8-0f51-498d-b78f-6ef455d68371">
+              <NavigationalPropertyMoniker name="/DbContext/InscripcionDetalle/Inscripcion" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="f4757ad7-be13-4538-a0d4-8afa1f5f55b9">
+          <NavigationalProperty Id="44469f27-cbde-4766-a02d-6083cea1e87f" name="Seccion" type="Seccion" label="Seccion : Seccion" nullable="true" kind="Persistent" fieldName="_seccion" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="0269cb96-eee1-4a33-ae9a-3ea5205e99bc">
+          <NavigationalProperty Id="bf6d1baf-45e8-4d50-9d91-627356cd4263" name="Inscripcion" type="Inscripcion" label="Inscripcion : Inscripcion" nullable="true" kind="Persistent" fieldName="_inscripcion" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5dda7c59-8143-400b-98bb-51666416a511">
+          <NavigationalProperty Id="59a2c627-cb30-42e6-8367-c6340b965347" name="Evaluacions" type="IList&lt;Evaluacion&gt;" label="Evaluacions : IList&lt;Evaluacion&gt;" nullable="true" kind="Persistent" fieldName="_evaluacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="0b4bf8df-b862-40c0-b29a-7d3f11e8f91b" name="Inscripcion" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="5bc936b8-6cac-4f41-9d3b-562bc7033eaf" name="CodigoInscripcion" type="Int32" label="CodigoInscripcion : Int32" kind="Persistent" identity="true" fieldName="_codigoInscripcion" />
+      <Property Id="0c0485c1-8aae-40c1-8fde-7e9425e78e08" name="ApellidoMaterno" label="ApellidoMaterno : String" kind="Persistent" fieldName="_apellidoMaterno" />
+      <Property Id="70b56987-a845-478a-9949-90c242784e84" name="ApellidoPaterno" label="ApellidoPaterno : String" kind="Persistent" fieldName="_apellidoPaterno" />
+      <Property Id="4dd257f0-ad0b-41d7-b482-7e439f0f1e84" name="CodigoUbigeo" label="CodigoUbigeo : String" kind="Persistent" fieldName="_codigoUbigeo" />
+      <Property Id="bd1a08ca-3c29-490f-af1e-c8f34598c04d" name="Direccion" label="Direccion : String" kind="Persistent" fieldName="_direccion" />
+      <Property Id="d73b2c0e-5052-4efe-905f-1e3fd5e516d4" name="DNI" label="DNI : String" kind="Persistent" fieldName="_dNI" />
+      <Property Id="18850554-49e5-4ee7-9ce9-7342aeefa9f0" name="FechaInscripcion" type="DateTime" label="FechaInscripcion : DateTime" kind="Persistent" fieldName="_fechaInscripcion" />
+      <Property Id="eaa3f418-5415-4088-a50c-0df83941122d" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+      <Property Id="2376da7e-9f22-42d7-9495-5b46dc9c97b2" name="Tipo" type="Int32" label="Tipo : Int32" kind="Persistent" fieldName="_tipo" />
+      <AssociationTargets>
+        <Association Id="01a631d6-136d-4441-9704-c36349a96b98" SourceMultiplicity="One" name="InscripcionHasUbigeo">
+          <DomainClassMoniker name="/DbContext/Ubigeo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="e55a6914-1738-405b-8918-4ac05f7224d9">
+              <NavigationalPropertyMoniker name="/DbContext/Ubigeo/Inscripcions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="492997ad-59e7-4bde-a578-039c9cf7984f">
+              <NavigationalPropertyMoniker name="/DbContext/Inscripcion/Ubigeo" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="be2fdc52-6f27-4937-8e1e-4aba39792735">
+          <NavigationalProperty Id="93a0727e-6358-41be-8841-be9b558d025f" name="InscripcionDetalles" type="IList&lt;InscripcionDetalle&gt;" label="InscripcionDetalles : IList&lt;InscripcionDetalle&gt;" nullable="true" kind="Persistent" fieldName="_inscripcionDetalles" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="8245d27d-6022-4e13-a621-9011d6125af7">
+          <NavigationalProperty Id="66b4f62b-429d-4a76-9287-d5f921d21048" name="Ubigeo" type="Ubigeo" label="Ubigeo : Ubigeo" nullable="true" kind="Persistent" fieldName="_ubigeo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="f711bcb8-3f2f-4516-947c-f8003d4cd487" name="Evaluacion" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Backend" concurrencyMember="Hora" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="edb5e66d-ed57-4864-bc00-8b3463bb6cc5" name="CodigoEvaluacion" type="Int32" label="CodigoEvaluacion : Int32" kind="Persistent" identity="true" fieldName="_codigoEvaluacion" />
+      <Property Id="e7816f0e-0fe9-44f7-a36f-b965d6d81de8" name="CodigoAlumnoPeriodo" type="Int32" label="CodigoAlumnoPeriodo : Int32" nullable="true" kind="Persistent" fieldName="_codigoAlumnoPeriodo" />
+      <Property Id="860d6129-3ba7-4bd7-b6fe-6761010a8111" name="CodigoInscripcionDetalle" type="Int32" label="CodigoInscripcionDetalle : Int32" nullable="true" kind="Persistent" fieldName="_codigoInscripcionDetalle" />
+      <Property Id="ccaa594f-b7ed-4ce5-86d7-f897b75d92b1" name="CodigoUsuario" type="Int32" label="CodigoUsuario : Int32" nullable="true" kind="Persistent" fieldName="_codigoUsuario" />
+      <Property Id="b009cf24-b828-4679-95ee-0cbee0253aa8" name="Evaluador" label="Evaluador : String" kind="Persistent" fieldName="_evaluador" />
+      <Property Id="835a09fb-cb08-4c05-ad2d-186f0ea8bbf9" name="Fecha" type="DateTime" label="Fecha : DateTime" nullable="true" kind="Persistent" fieldName="_fecha" />
+      <Property Id="18cfa5f6-ae77-4fef-9e2f-e8479d22f658" name="Hora" type="Int64" label="Hora : Int64" nullable="true" kind="Persistent" fieldName="_hora" />
+      <Property Id="2b186312-aeac-48bf-ba73-237b09b40621" name="Observacion" label="Observacion : String" kind="Persistent" fieldName="_observacion" />
+      <Property Id="456d65f8-3a2e-49e5-85a2-688662e1e249" name="Respuesta" type="Int32" label="Respuesta : Int32" nullable="true" kind="Persistent" fieldName="_respuesta" />
+      <Property Id="9200183b-2293-40a8-b1f1-a96b7493fa0e" name="Tipo" type="Int32" label="Tipo : Int32" nullable="true" kind="Persistent" fieldName="_tipo" />
+      <AssociationTargets>
+        <Association Id="7abf541d-58e9-4ec3-a95a-2b128ef77bfc" SourceMultiplicity="ZeroOne" name="EvaluacionHasUsuario">
+          <DomainClassMoniker name="/DbContext/Usuario" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5aa98c85-5a0a-462a-b9dd-7c79309f9ecc">
+              <NavigationalPropertyMoniker name="/DbContext/Usuario/Evaluacions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="ac1b2243-9de7-4d97-95fe-7950638619c3">
+              <NavigationalPropertyMoniker name="/DbContext/Evaluacion/Usuario" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="ec66e9f4-10fb-4dbb-b029-3629166371ce" SourceMultiplicity="ZeroOne" name="EvaluacionHasInscripcionDetalle">
+          <DomainClassMoniker name="/DbContext/InscripcionDetalle" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="6389871f-d70c-41c3-81cc-957992c8aed8">
+              <NavigationalPropertyMoniker name="/DbContext/InscripcionDetalle/Evaluacions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="aad2e262-c5b6-4799-ac61-fe9b8f9ca345">
+              <NavigationalPropertyMoniker name="/DbContext/Evaluacion/InscripcionDetalle" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="54de26a9-59a5-435a-9e0d-436edf72f0cc" SourceMultiplicity="ZeroOne" name="EvaluacionHasAlumnoPeriodo">
+          <DomainClassMoniker name="/DbContext/AlumnoPeriodo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="ce60f0cf-b87e-47bd-b100-cb0b879f8841">
+              <NavigationalPropertyMoniker name="/DbContext/AlumnoPeriodo/Evaluacions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="30edeb55-4955-4bc6-93d0-8e8b79fc615c">
+              <NavigationalPropertyMoniker name="/DbContext/Evaluacion/AlumnoPeriodo" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="79dce8a5-a736-471b-a9d3-af53fc56a887">
+          <NavigationalProperty Id="4fc11256-1a00-46b9-9fbf-740f54acc2ba" name="Usuario" type="Usuario" label="Usuario : Usuario" nullable="true" kind="Persistent" fieldName="_usuario" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="b340abb4-692d-44c6-8486-27a35db22090">
+          <NavigationalProperty Id="dc5d6d42-7864-4e63-9ea3-246dd7cf80a7" name="InscripcionDetalle" type="InscripcionDetalle" label="InscripcionDetalle : InscripcionDetalle" nullable="true" kind="Persistent" fieldName="_inscripcionDetalle" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="74677e4c-566b-4ac7-b979-4063278fb064">
+          <NavigationalProperty Id="117165d2-b871-480c-8368-4f10c98116eb" name="AlumnoPeriodo" type="AlumnoPeriodo" label="AlumnoPeriodo : AlumnoPeriodo" nullable="true" kind="Persistent" fieldName="_alumnoPeriodo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="90055d41-401c-4d41-aaaa-71ddeb2f5c8a" name="CatalogoEstado" namespace="it.dominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="4536f9a2-2c07-4d6f-b18d-3e0cbaa3d0d7" name="CodigoCatalogo" type="Int32" label="CodigoCatalogo : Int32" kind="Persistent" identity="true" fieldName="_codigoCatalogo" />
+      <Property Id="62d1fa93-15b4-42d2-bcec-f575e24b553c" name="ValorCatalgo" type="Int32" label="ValorCatalgo : Int32" kind="Persistent" identity="true" fieldName="_valorCatalgo" />
+      <Property Id="673451c8-e2bb-46f4-9a5b-caef229fc25e" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
+    </DomainClass>
+    <DomainClass Id="2dddd2d3-1095-4950-8663-c7a3a6dbe363" name="AlumnoPeriodo" namespace="it.dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="81154275-d937-4e98-8954-5b1d7aeba5fe" name="CodigoAlumnoPeriodo" type="Int32" label="CodigoAlumnoPeriodo : Int32" kind="Persistent" identity="true" fieldName="_codigoAlumnoPeriodo" />
+      <Property Id="d163a5d9-536c-48a7-affc-4e5d2be8b8fb" name="CodigoPeriodo" type="Int32" label="CodigoPeriodo : Int32" kind="Persistent" fieldName="_codigoPeriodo" />
+      <Property Id="ebf331b7-557c-4147-aec4-cb8457b5bb71" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" fieldName="_codigoPersona" />
+      <Property Id="01dc70a8-138d-41d4-8be3-5cdf1979458c" name="CodigoSeccion" type="Int32" label="CodigoSeccion : Int32" kind="Persistent" fieldName="_codigoSeccion" />
+      <Property Id="e9a37201-ea24-4773-822f-a75b9c88c38e" name="Estado" type="Int32" label="Estado : Int32" nullable="true" kind="Persistent" fieldName="_estado" />
+      <AssociationTargets>
+        <Association Id="ee39c9d2-47af-432f-bfe9-46f00996908c" SourceMultiplicity="One" name="AlumnoPeriodoHasAlumno">
+          <DomainClassMoniker name="/DbContext/Alumno" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="35d26668-687f-4a15-a75a-bd8e52084b48">
+              <NavigationalPropertyMoniker name="/DbContext/Alumno/AlumnoPeriodos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="0c8cdbc1-81d5-43fc-8678-187a0b92ad77">
+              <NavigationalPropertyMoniker name="/DbContext/AlumnoPeriodo/Alumno" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="04a64a05-e8f2-43f5-a973-454486374943" SourceMultiplicity="One" name="AlumnoPeriodoHasPeriodo">
+          <DomainClassMoniker name="/DbContext/Periodo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="8590f048-f7a1-4b73-84a6-70ef4d52cd37">
+              <NavigationalPropertyMoniker name="/DbContext/Periodo/AlumnoPeriodos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="db549981-a9f3-446d-a409-2044ec6ec539">
+              <NavigationalPropertyMoniker name="/DbContext/AlumnoPeriodo/Periodo" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="b4140e72-8bca-4d41-af4f-68b9ab04d922" SourceMultiplicity="One" name="AlumnoPeriodoHasSeccion">
+          <DomainClassMoniker name="/DbContext/Seccion" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="9e08fbce-a259-44a8-a4d8-20936a8d471b">
+              <NavigationalPropertyMoniker name="/DbContext/Seccion/AlumnoPeriodos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="2fd6630e-c8b0-43f7-8626-6f1d32438e7b">
+              <NavigationalPropertyMoniker name="/DbContext/AlumnoPeriodo/Seccion" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="2e101fba-bc5e-448c-a7d2-6ff5041031b8">
+          <NavigationalProperty Id="aa825bb5-7716-43ca-b6c6-fd168acee67a" name="Evaluacions" type="IList&lt;Evaluacion&gt;" label="Evaluacions : IList&lt;Evaluacion&gt;" nullable="true" kind="Persistent" fieldName="_evaluacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="599e49bf-206c-4c94-a8a9-469dc30b1840">
+          <NavigationalProperty Id="6fbf1269-026d-42d1-8114-fc20c319149c" name="Alumno" type="Alumno" label="Alumno : Alumno" nullable="true" kind="Persistent" fieldName="_alumno" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e52248d2-8084-4b1e-9c80-4e2aeffab257">
+          <NavigationalProperty Id="5fea0415-4821-430b-acd8-095e25473d02" name="Periodo" type="Periodo" label="Periodo : Periodo" nullable="true" kind="Persistent" fieldName="_periodo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a5390f1e-48e5-48e8-94a9-b5ba3fa0042e">
+          <NavigationalProperty Id="bb175767-0ca5-4c47-bbee-d0cc11ccfaf9" name="Seccion" type="Seccion" label="Seccion : Seccion" nullable="true" kind="Persistent" fieldName="_seccion" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="96406b9c-c234-4e95-a756-1755e0bd8d86" name="Alumno" namespace="it.dominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="769d18fe-421f-491f-ae98-b6f4e1d0f743" name="CodigoPersona" type="Int32" label="CodigoPersona : Int32" kind="Persistent" identity="true" fieldName="_codigoPersona" />
+      <Property Id="33153d36-0e79-49df-b9bf-ea6b881a3a90" name="DNI" label="DNI : String" kind="Persistent" fieldName="_dNI" />
+      <Property Id="ea207889-af6b-471c-a28b-68808b49dab2" name="FechaNacimiento" type="DateTime" label="FechaNacimiento : DateTime" nullable="true" kind="Persistent" fieldName="_fechaNacimiento" />
+      <Property Id="3b9b224f-26bf-4e38-8e0d-a2805d1895ba" name="Sexo" type="Int32" label="Sexo : Int32" nullable="true" kind="Persistent" fieldName="_sexo" />
+      <AssociationTargets>
+        <Association Id="7c1d2c79-dbbd-41eb-934e-bca4ce62d4e0" SourceMultiplicity="One" TargetMultiplicity="ZeroOne" name="AlumnoHasPersona">
+          <DomainClassMoniker name="/DbContext/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="54973aa2-a759-48de-856f-dcf42d298b60">
+              <NavigationalPropertyMoniker name="/DbContext/Persona/Alumno" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="fd73b308-bfba-4dfb-9218-0dc7e8e71c07">
+              <NavigationalPropertyMoniker name="/DbContext/Alumno/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6721d634-425f-415c-ad35-ee49b10b0aca">
+          <NavigationalProperty Id="c5a1f00e-8cd9-42f6-b41e-98dc0d7c29c3" name="AlumnoPeriodos" type="IList&lt;AlumnoPeriodo&gt;" label="AlumnoPeriodos : IList&lt;AlumnoPeriodo&gt;" nullable="true" kind="Persistent" fieldName="_alumnoPeriodos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="2671acbf-b86a-4413-9795-512324dce51b">
+          <NavigationalProperty Id="d572437a-9f51-48fa-a3e2-222f8cc0ed32" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="_persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="d5922e06-4b82-44d4-af4e-f1e9c22e9c8a">
+      <domainContainer name="DbContext" namespace="it.dominio" showPropertiesCompartment="true">
+        <entitySetProperty name="Usuarios" namespace="it.dominio" type="Usuario" label="Usuarios : IQueryable&lt;it.dominio.Usuario&gt;" />
+        <entitySetProperty name="Ubigeos" namespace="it.dominio" type="Ubigeo" label="Ubigeos : IQueryable&lt;it.dominio.Ubigeo&gt;" />
+        <entitySetProperty name="Seccions" namespace="it.dominio" type="Seccion" label="Seccions : IQueryable&lt;it.dominio.Seccion&gt;" />
+        <entitySetProperty name="Personals" namespace="it.dominio" type="Personal" label="Personals : IQueryable&lt;it.dominio.Personal&gt;" />
+        <entitySetProperty name="Personas" namespace="it.dominio" type="Persona" label="Personas : IQueryable&lt;it.dominio.Persona&gt;" />
+        <entitySetProperty name="Periodos" namespace="it.dominio" type="Periodo" label="Periodos : IQueryable&lt;it.dominio.Periodo&gt;" />
+        <entitySetProperty name="Perfils" namespace="it.dominio" type="Perfil" label="Perfils : IQueryable&lt;it.dominio.Perfil&gt;" />
+        <entitySetProperty name="Padres" namespace="it.dominio" type="Padre" label="Padres : IQueryable&lt;it.dominio.Padre&gt;" />
+        <entitySetProperty name="InscripcionDetalles" namespace="it.dominio" type="InscripcionDetalle" label="InscripcionDetalles : IQueryable&lt;it.dominio.InscripcionDetalle&gt;" />
+        <entitySetProperty name="Inscripcions" namespace="it.dominio" type="Inscripcion" label="Inscripcions : IQueryable&lt;it.dominio.Inscripcion&gt;" />
+        <entitySetProperty name="Evaluacions" namespace="it.dominio" type="Evaluacion" label="Evaluacions : IQueryable&lt;it.dominio.Evaluacion&gt;" />
+        <entitySetProperty name="CatalogoEstados" namespace="it.dominio" type="CatalogoEstado" label="CatalogoEstados : IQueryable&lt;it.dominio.CatalogoEstado&gt;" />
+        <entitySetProperty name="AlumnoPeriodos" namespace="it.dominio" type="AlumnoPeriodo" label="AlumnoPeriodos : IQueryable&lt;it.dominio.AlumnoPeriodo&gt;" />
+        <entitySetProperty name="Alumnos" namespace="it.dominio" type="Alumno" label="Alumnos : IQueryable&lt;it.dominio.Alumno&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>
