@@ -1,0 +1,5 @@
+H:\UPC\DESARROLLO DE SISTEMAS DISTRIBUIDOS\Trabajo\wcfVisaVerified\Entidades\obj\Debug\ResolveAssemblyReference.cache
+H:\UPC\DESARROLLO DE SISTEMAS DISTRIBUIDOS\Trabajo\wcfVisaVerified\Entidades\bin\Debug\Entidades.dll
+H:\UPC\DESARROLLO DE SISTEMAS DISTRIBUIDOS\Trabajo\wcfVisaVerified\Entidades\bin\Debug\Entidades.pdb
+H:\UPC\DESARROLLO DE SISTEMAS DISTRIBUIDOS\Trabajo\wcfVisaVerified\Entidades\obj\Debug\Entidades.dll
+H:\UPC\DESARROLLO DE SISTEMAS DISTRIBUIDOS\Trabajo\wcfVisaVerified\Entidades\obj\Debug\Entidades.pdb
