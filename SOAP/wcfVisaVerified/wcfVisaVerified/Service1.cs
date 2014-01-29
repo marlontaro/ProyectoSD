@@ -13,7 +13,7 @@ namespace wcfVisaVerified
     {
         #region Miembros de IService1
 
-        public int GetApproval(string IdCard, string NameCard, String ExpirationDate, string CVVCode)
+        public int GetApproval(string IdCard, string NameCard, Decimal Price, String ExpirationDate, string CVVCode)
         {
             List<Tarjeta> Tarjetas = new List<Tarjeta>();
 
