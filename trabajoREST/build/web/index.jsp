@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h4>Consulta RENIEC</h4>
+        <h4>RENIEC</h4>
         <br />
         <div style="float: left">
             <strong> Ingrese Nro DNI :</strong>
