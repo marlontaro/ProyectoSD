@@ -6,6 +6,9 @@ Trello: 	https://trello.com/b/vZdywIoB/proyecto-colegio
 
 Mockups: 	https://loschabelos.mybalsamiq.com/projects/proyectocolegio/grid
 
+Documentación:	
+
+
 Github: 
 
 			- Joan Chafloque - U201300007
