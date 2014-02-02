@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Register Src="~/Control/WebMenu.ascx" TagName="Menu" TagPrefix="usrpagina" %>
 <%@ Register Src="~/Control/WebCabecera.ascx" TagName="Cabecera" TagPrefix="usrpagina" %>
 <%@ Register Src="~/Control/WebPie.ascx" TagName="PiePagina" TagPrefix="usrpagina" %>
@@ -11,6 +13,7 @@
    <!--Cabecera-->
 </head>
 <body>
+   
     <form id="form1" runat="server">
         <!--Menu-->
         <usrpagina:Menu ID="usrMenu" runat="server" />
@@ -63,7 +66,7 @@
               
                         <div class="widget-box">
                             <div class="widget-title">
-                                <h5><asp:Label ID="lblPendientes" runat="server" Text="CMS"></asp:Label></h5>
+                                <h5><asp:Label ID="lblPendientes" runat="server" Text="Pendientes"></asp:Label></h5>
                             </div>
                             <div class="widget-content" style="height: 250px;">
                                 <div class="span6" style="padding-top:10px;">
@@ -72,33 +75,11 @@
                                             <asp:HyperLink ID="lnkPPagina" runat="server" NavigateUrl="~/CMS/WebPagina.aspx">
                                                 <i class="icon-tag"></i><span style="width: 50px;"><strong style="color: #000000">
                                                     <asp:Label ID="lblCPagina" runat="server" Text="0"></asp:Label></strong></span>&nbsp;<small>
-                                                    <asp:Label ID="lblPagina" runat="server" Text="Paginas" ></asp:Label></small>
+                                                    <asp:Label ID="lblPagina" runat="server" Text="Inscripciones" ></asp:Label></small>
                                             </asp:HyperLink>                                    
                                         </li>   
                                                           
-                                        <li>
-                                            <asp:HyperLink ID="lnkPPlantilla" runat="server" NavigateUrl="~/CMS/WebPlantilla.aspx">                                    
-                                                <i class="icon-tag"></i><span style="width: 50px;"><strong style="color: #000000">
-                                                    <asp:Label ID="lblCPlantilla" runat="server" Text="0"></asp:Label></strong></span>&nbsp;<small>
-                                                    <asp:Label ID="lblPlantilla" runat="server" Text="Plantillas" ></asp:Label></small>                                    
-                                            </asp:HyperLink>
-                                        </li> 
-
-                                        <li>
-                                            <asp:HyperLink ID="lnkPSeccion" runat="server" NavigateUrl="~/CMS/WebSeccion.aspx">                                    
-                                                <i class="icon-tag"></i><span style="width: 50px;"><strong style="color: #000000">
-                                                    <asp:Label ID="lblCSeccion" runat="server" Text="0"></asp:Label></strong></span>&nbsp;<small>
-                                                    <asp:Label ID="lblSeccion" runat="server" Text="Secciones" ></asp:Label></small>                                    
-                                            </asp:HyperLink>
-                                        </li> 
-
-                                        <li>
-                                            <asp:HyperLink ID="lnkPItem" runat="server" NavigateUrl="~/CMS/WebItem.aspx">                                    
-                                                <i class="icon-tag"></i><span style="width: 50px;"><strong style="color: #000000">
-                                                    <asp:Label ID="lblCItem" runat="server" Text="0"></asp:Label></strong></span>&nbsp;<small>
-                                                    <asp:Label ID="lblItem" runat="server" Text="Items" ></asp:Label></small>                                    
-                                            </asp:HyperLink>
-                                        </li> 
+                                      
                                     </ul>                        
                                 </div>
                             </div>

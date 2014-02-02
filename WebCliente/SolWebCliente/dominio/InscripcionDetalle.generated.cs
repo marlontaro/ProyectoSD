@@ -129,6 +129,19 @@ namespace it.dominio
 		    }
 		}
 		
+		private string _dNI;
+		public virtual string DNI 
+		{ 
+		    get
+		    {
+		        return this._dNI;
+		    }
+		    set
+		    {
+		        this._dNI = value;
+		    }
+		}
+		
 		private Seccion _seccion;
 		public virtual Seccion Seccion 
 		{ 

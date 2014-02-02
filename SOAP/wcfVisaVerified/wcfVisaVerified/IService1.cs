@@ -13,7 +13,7 @@ namespace wcfVisaVerified
     public interface IService1
     {
         [OperationContract]
-        int GetApproval(String IdCard, String NameCard, String ExpirationDate, String CVVCode);
+        int GetApproval(String IdCard, String NameCard, decimal Price, String ExpirationDate, String CVVCode);
     }
 
 }

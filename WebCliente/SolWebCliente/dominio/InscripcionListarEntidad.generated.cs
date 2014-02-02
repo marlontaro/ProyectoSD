@@ -18,12 +18,11 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using it.dominio;
 
 
 namespace it.dominio	
 {
-	public partial class Inscripcion
+	public partial class InscripcionListarEntidad
 	{
 		private int _codigoInscripcion;
 		public virtual int CodigoInscripcion 
@@ -64,42 +63,16 @@ namespace it.dominio
 		    }
 		}
 		
-		private string _nombre;
-		public virtual string Nombre 
+		private string _apoderado;
+		public virtual string Apoderado 
 		{ 
 		    get
 		    {
-		        return this._nombre;
+		        return this._apoderado;
 		    }
 		    set
 		    {
-		        this._nombre = value;
-		    }
-		}
-		
-		private string _apellidoMaterno;
-		public virtual string ApellidoMaterno 
-		{ 
-		    get
-		    {
-		        return this._apellidoMaterno;
-		    }
-		    set
-		    {
-		        this._apellidoMaterno = value;
-		    }
-		}
-		
-		private string _apellidoPaterno;
-		public virtual string ApellidoPaterno 
-		{ 
-		    get
-		    {
-		        return this._apellidoPaterno;
-		    }
-		    set
-		    {
-		        this._apellidoPaterno = value;
+		        this._apoderado = value;
 		    }
 		}
 		
@@ -139,41 +112,6 @@ namespace it.dominio
 		    set
 		    {
 		        this._codigoUbigeo = value;
-		    }
-		}
-		
-		private string _telefono;
-		public virtual string Telefono 
-		{ 
-		    get
-		    {
-		        return this._telefono;
-		    }
-		    set
-		    {
-		        this._telefono = value;
-		    }
-		}
-		
-		private Ubigeo _ubigeo;
-		public virtual Ubigeo Ubigeo 
-		{ 
-		    get
-		    {
-		        return this._ubigeo;
-		    }
-		    set
-		    {
-		        this._ubigeo = value;
-		    }
-		}
-		
-		private IList<InscripcionDetalle> _inscripcionDetalles = new List<InscripcionDetalle>();
-		public virtual IList<InscripcionDetalle> InscripcionDetalles 
-		{ 
-		    get
-		    {
-		        return this._inscripcionDetalles;
 		    }
 		}
 		

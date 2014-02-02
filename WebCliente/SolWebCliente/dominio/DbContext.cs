@@ -164,6 +164,13 @@ namespace it.dominio
 	    	}
 		}
 		
+		public IEnumerable<it.dominio.InscripcionListarEntidad> InscripcionListar()
+		{
+			IEnumerable<it.dominio.InscripcionListarEntidad> queryResult = this.ExecuteQuery<it.dominio.InscripcionListarEntidad>("[usp_InscripcionListar]", CommandType.StoredProcedure);
+	        
+	    	return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -244,6 +251,8 @@ namespace it.dominio
 		{ 
 			get;
 		}
+
+		IEnumerable<it.dominio.InscripcionListarEntidad> InscripcionListar();
 
 	}
 }

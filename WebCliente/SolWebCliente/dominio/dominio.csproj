@@ -65,6 +65,9 @@
     <Compile Include="InscripcionDetalle.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="InscripcionListarEntidad.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Padre.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>
