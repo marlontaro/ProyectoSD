@@ -10,7 +10,7 @@ import pe.edu.upc.dominio.Alumno;
 import pe.edu.upc.dominio.GestorAlumno;
 
 @Stateless
-@Path("/alumno")
+@Path("/alumno") 
 public class AlumnoService {
 
     private GestorAlumno gestorAlumno;
