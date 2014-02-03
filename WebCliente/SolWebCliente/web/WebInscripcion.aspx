@@ -33,7 +33,7 @@
               <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title">
-                        <h5><asp:Label ID="lblPerfil" runat="server" Text="Perfil"></asp:Label></h5>
+                        <h5><asp:Label ID="lblInscripcion" runat="server" Text="Inscripcion"></asp:Label></h5>
                             <div class="buttons">                        
                                 <asp:HyperLink ID="lnkAgregar" runat="server" 
                                     NavigateUrl="~/WebInscripcionAgregar.aspx" CssClass="btn btn-primary">

@@ -60,7 +60,7 @@
                                 <div class="form-horizontal">
                                     
                                     <div>
-                                        <div style="float:left;width:450px">
+                                        <div style="float:left;width:370px">
                                              <div class="control-group">                                        
                                                 <span class="control-label">
                                                     <asp:Label ID="lblDNI" runat="server" Text="DNI" CssClass="pull-right" 
@@ -68,14 +68,15 @@
                                                     <span class="pull-right requerido">*</span>
                                                 </span>
                                                 <div class="controls">
-                                                    <asp:TextBox ID="txtDNI" runat="server" Width="210px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDNI" runat="server" Width="120px"></asp:TextBox>
                                                 </div>                        
                                             </div>
                                         </div>
 
                                         <div style="float:left">
 
-                                            <asp:LinkButton ID="lnkBuscarReniec" runat="server" CssClass="btn btn-primary">
+                                            <asp:LinkButton ID="lnkBuscarReniec" runat="server" CssClass="btn btn-primary" 
+                                                onclick="lnkBuscarReniec_Click">
                                                 Buscar Reniec
                                             </asp:LinkButton>
                                                                                         
@@ -87,7 +88,7 @@
                                     <div class="control-group">                                        
                                         <span class="control-label">
                                             <asp:Label ID="Label3" runat="server" Text="Tipo" CssClass="pull-right" 
-                                                AssociatedControlID="TxtDni"></asp:Label>
+                                                AssociatedControlID="cboTipo"></asp:Label>
                                             <span class="pull-right requerido">*</span>
                                         </span>
                                         <div class="controls">
@@ -141,7 +142,7 @@
                                             <span class="pull-right requerido">*</span>
                                         </span>
                                         <div class="controls">
-                                            <asp:TextBox ID="txtDireccion" runat="server" Width="500px"></asp:TextBox>
+                                            <asp:TextBox ID="txtDireccion" runat="server" Width="750px"></asp:TextBox>
                                         </div>                        
                                     </div>
 
@@ -157,7 +158,7 @@
                                                 <div class="controls">
                                                     <asp:DropDownList ID="cboDepartamento" runat="server" AutoPostBack="True" 
                                                         onselectedindexchanged="cboDepartamento_SelectedIndexChanged">
-                                                        <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem> 
+                                                        <asp:ListItem Text="SELECCIONE" Value="0"></asp:ListItem> 
                                                     </asp:DropDownList>
                                                 </div>                        
                                             </div>
@@ -173,7 +174,7 @@
                                                 <div class="controls">
                                                     <asp:DropDownList ID="cboProvincia" runat="server" AutoPostBack="True" 
                                                         onselectedindexchanged="cboProvincia_SelectedIndexChanged">
-                                                        <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem> 
+                                                        <asp:ListItem Text="SELECCIONE" Value="0"></asp:ListItem> 
                                                     </asp:DropDownList>
                                                 </div>                        
                                             </div>
@@ -193,7 +194,7 @@
                                                 </span>
                                                 <div class="controls">
                                                     <asp:DropDownList ID="cboDistrito" runat="server">
-                                                        <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem> 
+                                                        <asp:ListItem Text="SELECCIONE" Value="0"></asp:ListItem> 
                                                     </asp:DropDownList>
                                                 </div>                        
                                             </div>
@@ -203,8 +204,7 @@
                                              <div class="control-group">                                        
                                                     <span class="control-label">
                                                         <asp:Label ID="lblTelefono" runat="server" Text="Telefono/Celular" CssClass="pull-right" 
-                                                            AssociatedControlID="txtTelefono"></asp:Label>
-                                                        <span class="pull-right requerido">*</span>
+                                                            AssociatedControlID="txtTelefono"></asp:Label> 
                                                     </span>
                                                     <div class="controls">
                                                           <asp:TextBox ID="txtTelefono" runat="server" Width="300px"></asp:TextBox>
@@ -217,169 +217,217 @@
 
                                 </div>
 
-                                <h5>Agregar Hijos</h5>
+                                <div>
+                                        <div style="float:left;padding-right:20px;padding-left:30px">
+                                            <h5>Hijos</h5>
+                                        </div>
+                                        <div style="float:left;padding-top:10px">
+                                            <asp:LinkButton ID="lnkAgregar" runat="server" onclick="lnkAgregar_Click" ><i class="icon-plus"></i> Agregar</asp:LinkButton>   
+                                        </div>
+                                        <div style="clear:both"></div>                      
+                                </div>
                                 <hr />
 
-                               
-                                <div class="form-horizontal">
+                                <telerik:RadGrid ID="gridDetalle" runat="server" Skin="" CellSpacing="0" GridLines="None" 
+                                Width="1000px" EnableEmbeddedSkins="false" onitemcommand="gridDetalle_ItemCommand" onitemcreated="gridDetalle_ItemCreated">
+
+                                    <MasterTableView AutoGenerateColumns="False" ShowHeader="false"  TableLayout="Fixed" > 
+                                  
+                                        <Columns>
+                                             <telerik:GridTemplateColumn FilterControlAltText="Filter TemplateColumn column" 
+                                                UniqueName="temAlmacen" HeaderText="" HeaderStyle-Width="1000px"                                    
+                                                HeaderButtonType="None" Reorderable="False" AllowFiltering="False" >
+                                                    <ItemTemplate>
+
+                                                        <asp:Label ID="lblCodigo" runat="server" Text='<%# Bind("CodigoInscripcionDetalle") %>'>
+                                                        </asp:Label>
+
+                                                        <asp:Label ID="lblNro" runat="server" Text='<%# Bind("CodigoInscripcion") %>'>
+                                                        </asp:Label>
+
+
+                                                        <div class="form-horizontal" style="padding-top:5px">
                                     
-                                    <div>
-                                        <div style="float:left;width:450px">
-                                             <div class="control-group">                                        
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label1" runat="server" Text="DNI" CssClass="pull-right" 
-                                                        AssociatedControlID="txtDni"></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                    <asp:TextBox ID="txtHijoDni" runat="server" Width="210px"></asp:TextBox>
-                                                </div>                        
-                                            </div>
-                                        </div>
+                                                            <div>
+                                                                <div style="float:left;width:370px">
+                                                                     <div class="control-group">                                        
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="lblHijoDni" runat="server" Text="DNI" CssClass="pull-right"   AssociatedControlID="txtHijoDni"                                                                              ></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtHijoDni" runat="server" Width="120px" Text='<%# Bind("DNI") %>'></asp:TextBox>
+                                                                        </div>                         
+                                                                    </div>
+                                                                </div>
 
-                                        <div style="float:left">
+                                                                <div style="float:left">
 
-                                            <asp:LinkButton ID="lnkBuscarMinedu" runat="server" CssClass="btn btn-primary">
-                                                Buscar MINEDU
-                                            </asp:LinkButton>
-                                                                                        
-                                        </div>
+                                                                    <asp:LinkButton ID="lnkBuscarMinedu" runat="server" CssClass="btn btn-primary" 
+                                                                        onclick="lnkBuscarMinedu_Click">
+                                                                        Buscar MINEDU
+                                                                    </asp:LinkButton>
+                                                                </div>
+                                                                <div style="float:left;padding-left:10px">
+                                                                    <asp:Literal ID="LitEduError" runat="server"></asp:Literal>                    
+                                                                </div>
 
-                                        <div style="clear:both">
-                                        </div>
-                                    </div>
+                                                                <div style="clear:both">
+                                                                </div>
+                                                            </div>
                                     
                                       
-                                    <div>
-                                        <div style="float:left;width:450px">
+                                                            <div>
+                                                                <div style="float:left;width:450px">
 
-                                            <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label2" runat="server" Text="Nombre" CssClass="pull-right" 
-                                                        AssociatedControlID="txtHijoNombre"></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                    <asp:TextBox ID="txtHijoNombre" runat="server" Width="300px"></asp:TextBox>
-                                                </div>                        
-                                            </div>
+                                                                    <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="lblHijoNombre" runat="server" Text="Nombre" CssClass="pull-right" 
+                                                                                AssociatedControlID="txtHijoNombre"></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtHijoNombre" runat="server" Width="300px" Text='<%# Bind("Nombre") %>'></asp:TextBox>
+                                                                        </div>                        
+                                                                    </div>
 
-                                         </div>
+                                                                 </div>
                                          
-                                         <div style="float:left">
+                                                                 <div style="float:left">
 
-                                             <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label4" runat="server" Text="Apellidos" CssClass="pull-right" 
-                                                       AssociatedControlID="txtHijoApellido"></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                    <asp:TextBox ID="txtHijoApellido" runat="server"  Width="300px" ></asp:TextBox>
-                                                </div>                        
-                                            </div>
+                                                                     <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="lblHijoApellido" runat="server" Text="Apellidos" CssClass="pull-right" 
+                                                                               AssociatedControlID="txtHijoApellido"></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtHijoApellido" runat="server"  Width="300px" Text='<%# Bind("ApellidoPaterno") %>'></asp:TextBox>
+                                                                        </div>                        
+                                                                    </div>
                                          
-                                         </div>
-                                         <div style="clear:both">
-                                         </div>
-                                    </div>
+                                                                 </div>
+                                                                 <div style="clear:both">
+                                                                 </div>
+                                                            </div>
 
 
-                                     <div>
-                                        <div style="float:left;width:450px">
+                                                             <div>
+                                                                <div style="float:left;width:450px">
 
-                                            <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label5" runat="server" Text="Fecha de Nacimiento" CssClass="pull-right" 
-                                                        ></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                    <telerik:RadDatePicker ID="dtFecha" runat="server" Height="30px">
-                                                    </telerik:RadDatePicker>
-                                                </div>                        
-                                            </div>
+                                                                    <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="Label5" runat="server" Text="Fecha de Nacimiento" CssClass="pull-right" 
+                                                                                ></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                            <telerik:RadDatePicker ID="dtFecha" runat="server" Height="30px" SelectedDate='<%# Bind("FechaNacimiento") %>'>
+                                                                            </telerik:RadDatePicker>
+                                                                        </div>                        
+                                                                    </div>
 
-                                         </div>
+                                                                 </div>
                                          
-                                         <div style="float:left">
+                                                                 <div style="float:left">
 
-                                             <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label6" runat="server" Text="Sexo" CssClass="pull-right" 
-                                                       AssociatedControlID="txtHijoApellido"></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                    <label class="radio inline">
-                                                        <asp:RadioButton ID="rbHombre" runat="server" GroupName="grSexo" /> Hombre
-                                                    </label>
+                                                                     <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="Label6" runat="server" Text="Sexo" CssClass="pull-right" 
+                                                                               AssociatedControlID="rbHombre"></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                            <label class="radio inline">
+                                                                                <asp:RadioButton ID="rbHombre" runat="server" GroupName="grSexo" /> Hombre
+                                                                            </label>
 
-                                                    <label class="radio inline">
-                                                    <asp:RadioButton ID="rbMujer" runat="server" GroupName="grSexo" />Mujer
-                                                    </label>
+                                                                            <label class="radio inline">
+                                                                            <asp:RadioButton ID="rbMujer" runat="server" GroupName="grSexo" />Mujer
+                                                                            </label>
                                                     
-                                                    <label class="radio inline">
-                                                    <asp:RadioButton ID="rbOtro" runat="server" GroupName="grSexo" />Otro
-                                                    </label>
-                                                </div>                        
-                                            </div>
+                                                                            <label class="radio inline">
+                                                                            <asp:RadioButton ID="rbOtro" runat="server" GroupName="grSexo" />Otro
+                                                                            </label>
+                                                                        </div>                        
+                                                                    </div>
                                          
-                                         </div>
-                                         <div style="clear:both">
-                                         </div>
-                                    </div>
+                                                                 </div>
+                                                                 <div style="clear:both">
+                                                                 </div>
+                                                            </div>
 
 
-                                    <div>
-                                        <div style="float:left;width:450px">
+                                                            <div>
+                                                                <div style="float:left;width:450px">
 
-                                            <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label7" runat="server" Text="Educacion" CssClass="pull-right" 
-                                                        ></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                      <asp:DropDownList ID="cboEducacion" runat="server" AutoPostBack="true"
-                                                          onselectedindexchanged="cboEducacion_SelectedIndexChanged">
-                                                        <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem> 
-                                                        <asp:ListItem Text="Inicial" Value="1"></asp:ListItem> 
-                                                        <asp:ListItem Text="Primaria" Value="2"></asp:ListItem> 
-                                                        <asp:ListItem Text="Secundaria" Value="3"></asp:ListItem> 
-                                                    </asp:DropDownList>
-                                                </div>                        
-                                            </div>
+                                                                    <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="Label7" runat="server" Text="Educacion" CssClass="pull-right" 
+                                                                               AssociatedControlID="cboEducacion" ></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                              <asp:DropDownList ID="cboEducacion" runat="server" AutoPostBack="true"
+                                                                                  onselectedindexchanged="cboEducacion_SelectedIndexChanged">
+                                                                                <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem> 
+                                                                                <asp:ListItem Text="Inicial" Value="1"></asp:ListItem> 
+                                                                                <asp:ListItem Text="Primaria" Value="2"></asp:ListItem> 
+                                                                                <asp:ListItem Text="Secundaria" Value="3"></asp:ListItem> 
+                                                                            </asp:DropDownList>
+                                                                        </div>                        
+                                                                    </div>
 
-                                         </div>
+                                                                 </div>
                                          
-                                         <div style="float:left">
+                                                                 <div style="float:left">
 
-                                              <div class="control-group">
-                                                <span class="control-label">
-                                                    <asp:Label ID="Label8" runat="server" Text="Seccion" CssClass="pull-right" 
-                                                        ></asp:Label>
-                                                    <span class="pull-right requerido">*</span>
-                                                </span>
-                                                <div class="controls">
-                                                      <asp:DropDownList ID="cboSeccion" runat="server" >    
-                                                       <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem>                                                     
-                                                    </asp:DropDownList>
-                                                </div>                        
-                                            </div>
+                                                                      <div class="control-group">
+                                                                        <span class="control-label">
+                                                                            <asp:Label ID="Label8" runat="server" Text="Seccion" CssClass="pull-right" 
+                                                                              AssociatedControlID="cboSeccion"  ></asp:Label>
+                                                                            <span class="pull-right requerido">*</span>
+                                                                        </span>
+                                                                        <div class="controls">
+                                                                              <asp:DropDownList ID="cboSeccion" runat="server" >    
+                                                                               <asp:ListItem Text="Seleccione" Value="0"></asp:ListItem>                                                     
+                                                                            </asp:DropDownList>
+                                                                        </div>                        
+                                                                    </div>
 
-                                         </div>
-                                         <div style="clear:both">
-                                         </div>
-                                    </div>
+                                                                 </div>
+                                                                 <div style="clear:both">
+                                                                 </div>
+                                                            </div> 
 
+                                                            <div style="padding-top:10px;padding-bottom:30px;">
+                                                                 <div style="padding-bottom:10px">
+                                                                    <div style="float:right;padding-right:50px"> 
+                                                                        
+                                                                        <asp:LinkButton ID="lnkEliminar" runat="server" meta:resourcekey="lnkPEliminar" 
+                                                                            CommandName="Eliminar" ToolTip=""  CssClass="btn btn-danger"
+                                                                            CommandArgument='<%# Bind("CodigoInscripcion") %>'>
+                                                                            Eliminar
+                                                                        </asp:LinkButton>      
 
+                                                                    </div>
+                                                                    <div style="clear:both"></div>
+                                                                 </div>   
+                                                                 <hr />   
+                                                            </div>
+                                                        </div>
 
-                                    </div>
-                                    
+                                                   </ItemTemplate>
+                                             </telerik:GridTemplateColumn>
+                                        </Columns>
+
+                                    </MasterTableView>
+                                </telerik:RadGrid>
+                              
+                                   <div style="padding-left:30px">
                                 <h5>Evaluaciones</h5>
                                 <hr />
-
+                                </div> 
                                 <div style=" padding-left:180px">
                                       <label class="checkbox inline" >
                                     <asp:CheckBox ID="chkPsicologia" runat="server"  />Psicologia

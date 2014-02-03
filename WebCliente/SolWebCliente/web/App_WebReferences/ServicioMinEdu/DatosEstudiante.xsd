@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://siagie.service/" targetNamespace="http://siagie.service/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ObtenerAlumno" type="tns:ObtenerAlumno" />
+  <xs:element name="ObtenerAlumnoResponse" type="tns:ObtenerAlumnoResponse" />
+  <xs:element name="ObtenerNotas" type="tns:ObtenerNotas" />
+  <xs:element name="ObtenerNotasResponse" type="tns:ObtenerNotasResponse" />
+  <xs:element name="datos" type="tns:datos" />
+  <xs:element name="datosResponse" type="tns:datosResponse" />
+  <xs:element name="notas" type="tns:notas" />
+  <xs:element name="notasResponse" type="tns:notasResponse" />
+  <xs:complexType name="ObtenerNotas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObtenerNotasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:DetalleNota" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DetalleNota">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Dni" type="xs:string" />
+      <xs:element minOccurs="0" name="Curso" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:string" />
+      <xs:element name="Nota" type="xs:double" />
+      <xs:element minOccurs="0" name="curso" type="xs:string" />
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element name="nota" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="datosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObtenerAlumno">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ObtenerAlumnoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Alumno" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Alumno">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Dni" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="ApellidoPaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="ApellidoMaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaNacimiento" type="xs:string" />
+      <xs:element minOccurs="0" name="Sexo" type="xs:string" />
+      <xs:element name="Anio" type="xs:int" />
+      <xs:element minOccurs="0" name="Institucion" type="xs:string" />
+      <xs:element minOccurs="0" name="Educacion" type="xs:string" />
+      <xs:element minOccurs="0" name="Grado" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:string" />
+      <xs:element name="anio" type="xs:int" />
+      <xs:element minOccurs="0" name="apellidoMaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" type="xs:string" />
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+      <xs:element minOccurs="0" name="educacion" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaNacimiento" type="xs:string" />
+      <xs:element minOccurs="0" name="grado" type="xs:string" />
+      <xs:element minOccurs="0" name="institucion" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="sexo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="notas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dni" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="notasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

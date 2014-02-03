@@ -5,10 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using it.dominio;
+using it.web.util;
 
 public partial class WebInscripcion : System.Web.UI.Page
 {
     Usuario oTUsuario;
+    Helper oHelper;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -25,7 +27,9 @@ public partial class WebInscripcion : System.Web.UI.Page
                 lnkAgregar.Visible = false;
                 pnlActivo.Visible = false;
                 pnlInactivo.Visible = true;
-                litSinConexion.Text =  ResolveClientUrl("~/");
+                oHelper = new Helper();
+
+                litSinConexion.Text = oHelper.DevuelveSinConexion();
             }
         }
     }

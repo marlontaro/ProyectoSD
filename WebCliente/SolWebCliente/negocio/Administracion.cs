@@ -8,7 +8,7 @@ namespace it.negocio
 {
     public class Administracion : IAdministracion
     {
-        IList<Ubigeo> oListaUbigeo;
+        private IList<Ubigeo> oListaUbigeo;
 
         public IList<Ubigeo> ListarDepartamento()
         {
@@ -70,6 +70,12 @@ namespace it.negocio
             }
 
             return oListaSeccion;
+        }
+
+
+        public void InsertarInscripcion(Inscripcion oInscripcion)
+        {
+            
         }
     }
 }

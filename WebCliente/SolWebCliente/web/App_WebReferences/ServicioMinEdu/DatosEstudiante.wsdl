@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://siagie.service/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="DatosEstudiante" targetNamespace="http://siagie.service/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://webserviceminedu.marlontaro.cloudbees.net:80/DatosEstudiante?xsd=1" namespace="http://siagie.service/" />
+    </xsd:schema>
+  </types>
+  <message name="notas">
+    <part name="parameters" element="tns:notas" />
+  </message>
+  <message name="notasResponse">
+    <part name="parameters" element="tns:notasResponse" />
+  </message>
+  <message name="ObtenerAlumno">
+    <part name="parameters" element="tns:ObtenerAlumno" />
+  </message>
+  <message name="ObtenerAlumnoResponse">
+    <part name="parameters" element="tns:ObtenerAlumnoResponse" />
+  </message>
+  <message name="datos">
+    <part name="parameters" element="tns:datos" />
+  </message>
+  <message name="datosResponse">
+    <part name="parameters" element="tns:datosResponse" />
+  </message>
+  <message name="ObtenerNotas">
+    <part name="parameters" element="tns:ObtenerNotas" />
+  </message>
+  <message name="ObtenerNotasResponse">
+    <part name="parameters" element="tns:ObtenerNotasResponse" />
+  </message>
+  <portType name="DatosEstudiante">
+    <operation name="notas">
+      <input wsam:Action="http://siagie.service/DatosEstudiante/notasRequest" message="tns:notas" />
+      <output wsam:Action="http://siagie.service/DatosEstudiante/notasResponse" message="tns:notasResponse" />
+    </operation>
+    <operation name="ObtenerAlumno">
+      <input wsam:Action="http://siagie.service/DatosEstudiante/ObtenerAlumnoRequest" message="tns:ObtenerAlumno" />
+      <output wsam:Action="http://siagie.service/DatosEstudiante/ObtenerAlumnoResponse" message="tns:ObtenerAlumnoResponse" />
+    </operation>
+    <operation name="datos">
+      <input wsam:Action="http://siagie.service/DatosEstudiante/datosRequest" message="tns:datos" />
+      <output wsam:Action="http://siagie.service/DatosEstudiante/datosResponse" message="tns:datosResponse" />
+    </operation>
+    <operation name="ObtenerNotas">
+      <input wsam:Action="http://siagie.service/DatosEstudiante/ObtenerNotasRequest" message="tns:ObtenerNotas" />
+      <output wsam:Action="http://siagie.service/DatosEstudiante/ObtenerNotasResponse" message="tns:ObtenerNotasResponse" />
+    </operation>
+  </portType>
+  <binding name="DatosEstudiantePortBinding" type="tns:DatosEstudiante">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="notas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ObtenerAlumno">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="datos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ObtenerNotas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DatosEstudiante">
+    <port name="DatosEstudiantePort" binding="tns:DatosEstudiantePortBinding">
+      <soap:address location="http://webserviceminedu.marlontaro.cloudbees.net:80/DatosEstudiante" />
+    </port>
+  </service>
+</definitions>

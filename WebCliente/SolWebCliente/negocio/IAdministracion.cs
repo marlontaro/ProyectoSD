@@ -13,5 +13,7 @@ namespace it.negocio
         IList<Ubigeo> ListarDistrito(string cProvincia);
 
         IList<Seccion> ListarSeccion(int nSeccion);
+
+        void InsertarInscripcion(Inscripcion oInscripcion);
     }
 }
