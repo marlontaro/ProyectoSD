@@ -6,20 +6,21 @@
 
 package service.siagie;
 
+import entidad.siagie.Alumno;
+import entidad.siagie.DetalleNota;
+ 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 
-/**
- *
- * @author JOAN CHAFLOQUE CANALES
- */
 @WebService(serviceName = "DatosEstudiante")
 public class DatosEstudiante {
 
-   @WebMethod(operationName = "datos")
+    @WebMethod(operationName = "datos")
     public String[] obtenerDatos(@WebParam(name = "dni") String dni) {
         // AP. PATERNO, AP.MATERNO, NOMBRES, FEC.NAC., ESTADO (P: Promovido, J: Repite, R: Retirado), NIVEL, GRADO, SECCION
         String[][] datosSiagie = new String [][] { 
@@ -58,4 +59,53 @@ public class DatosEstudiante {
         
         return hm.get(dni);
     }
+     
+    @WebMethod(operationName = "ObtenerAlumno")
+    public  Alumno ResultadoAlumno(@WebParam(name = "dni") String dni){
+        List<Alumno> oListaDetalle = new ArrayList<Alumno>();
+        Alumno oAlumno= new Alumno();
+        
+        oListaDetalle.add(new Alumno("12345601",  "GONZALES", "HUAMAN", "Juan Carlos", "12/08/2000", "Hombre", 
+                                    2013, "Colegio ABC", "Secundaria", "2 Año", "Promovido"));
+        
+        oListaDetalle.add(new Alumno("12345602",  "SANDOVAL", "AGUIRRE", "Renzo", "19/02/2000", "Hombre", 
+                                    2013, "Colegio ABC", "Secundaria", "2 Año", "Promovido"));
+        
+         oListaDetalle.add(new Alumno("12345603",  "GALDOZ", "SEMINARIO", "Miegule", "12/08/2000", "Hombre", 
+                                    2013, "Colegio ABC", "Secundaria", "2 Año", "Promovido"));
+         
+        for(Alumno oEntidad : oListaDetalle){
+            if(oEntidad.getDni().equalsIgnoreCase(dni)){
+                oAlumno = oEntidad;break;
+            }
+        }
+        
+         return oAlumno;
+    }
+       
+    @WebMethod(operationName = "ObtenerNotas")
+    public  List<DetalleNota> ResultadoNotas(@WebParam(name = "dni") String dni){
+        List<DetalleNota> oTemListaDetalle = new ArrayList<DetalleNota>();
+        List<DetalleNota> oListaDetalle = new ArrayList<DetalleNota>();
+
+        oTemListaDetalle.add(new DetalleNota("12345601", "Comunicacion Integral", "Aprobado", 13d));
+        oTemListaDetalle.add(new DetalleNota("12345601", "Matenatica", "Aprobado", 14d));
+        oTemListaDetalle.add(new DetalleNota("12345601", "Ciencias Naturales", "Aprobado", 13d));
+        oTemListaDetalle.add(new DetalleNota("12345601", "Algebra", "Aprobado", 16d));
+        
+        oTemListaDetalle.add(new DetalleNota("12345602", "Comunicacion Integral", "Aprobado", 15d));
+        oTemListaDetalle.add(new DetalleNota("12345602", "Matenatica", "Aprobado", 12d));
+        oTemListaDetalle.add(new DetalleNota("12345602", "Ciencias Naturales", "Aprobado", 17d));
+        oTemListaDetalle.add(new DetalleNota("12345602", "Algebra", "Aprobado", 13d));
+        
+        for(DetalleNota oEntidad : oTemListaDetalle){
+            if(oEntidad.getDni().equalsIgnoreCase(dni)){
+                oListaDetalle.add(oEntidad);break;
+            }
+        }
+        
+        return oListaDetalle;
+    }    
+  
+     
 }
