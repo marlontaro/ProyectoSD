@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UPC2014Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="UPC2014ModelStoreContainer">
+    <EntitySet Name="INSCRIPCION" EntityType="UPC2014Model.Store.INSCRIPCION" store:Type="Tables" store:Schema="dbo" store:Name="INSCRIPCION">
+      <DefiningQuery>SELECT 
+      [INSCRIPCION].[CodigoInscripcion] AS [CodigoInscripcion], 
+      [INSCRIPCION].[DNI] AS [DNI], 
+      [INSCRIPCION].[Tipo] AS [Tipo], 
+      [INSCRIPCION].[Nombre] AS [Nombre], 
+      [INSCRIPCION].[ApellidoPaterno] AS [ApellidoPaterno], 
+      [INSCRIPCION].[ApellidoMaterno] AS [ApellidoMaterno], 
+      [INSCRIPCION].[FechaInscripcion] AS [FechaInscripcion], 
+      [INSCRIPCION].[Direccion] AS [Direccion], 
+      [INSCRIPCION].[CodigoUbigeo] AS [CodigoUbigeo]
+      FROM [dbo].[INSCRIPCION] AS [INSCRIPCION]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'UPC2014.dbo.INSCRIPCION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="INSCRIPCION">
+    <Key>
+      <PropertyRef Name="CodigoInscripcion" />
+      <PropertyRef Name="DNI" />
+    </Key>
+    <Property Name="CodigoInscripcion" Type="int" Nullable="false" />
+    <Property Name="DNI" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Tipo" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="300" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="300" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="300" />
+    <Property Name="FechaInscripcion" Type="datetime" />
+    <Property Name="Direccion" Type="varchar" MaxLength="20" />
+    <Property Name="CodigoUbigeo" Type="varchar" MaxLength="6" />
+  </EntityType>
+</Schema>

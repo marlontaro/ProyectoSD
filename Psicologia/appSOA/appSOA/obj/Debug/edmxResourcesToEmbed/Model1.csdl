@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UPC2014Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="UPC2014Entities">
+    <EntitySet Name="INSCRIPCION" EntityType="UPC2014Model.INSCRIPCION" />
+  </EntityContainer>
+  <EntityType Name="INSCRIPCION">
+    <Key>
+      <PropertyRef Name="CodigoInscripcion" />
+      <PropertyRef Name="DNI" />
+    </Key>
+    <Property Name="CodigoInscripcion" Type="Int32" Nullable="false" />
+    <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Tipo" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="FechaInscripcion" Type="DateTime" />
+    <Property Name="Direccion" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="CodigoUbigeo" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

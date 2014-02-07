@@ -1,0 +1,7 @@
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\bin\Debug\DL.dll
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\bin\Debug\DL.pdb
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\bin\Debug\EL.dll
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\bin\Debug\EL.pdb
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\DL.dll
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\DL.pdb

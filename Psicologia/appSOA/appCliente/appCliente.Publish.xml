@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\Publicar" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="01/30/2014 00:42:20" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="01/30/2014 00:42:20" />
+    <file relUrl="bin/appCliente.pdb" publishTime="01/30/2014 01:04:01" />
+    <file relUrl="Web.config" publishTime="01/30/2014 01:04:02" />
+    <file relUrl="bin/appCliente.dll" publishTime="01/30/2014 01:04:01" />
+    <file relUrl="Default.aspx" publishTime="01/30/2014 00:45:53" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="01/30/2014 00:42:20" />
+  </publishProfile>
+</publishData>

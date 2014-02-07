@@ -1,0 +1,5 @@
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\appCliente\bin\appCliente.dll
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\appCliente\bin\appCliente.pdb
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\appCliente\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\appCliente\obj\Debug\appCliente.dll
+C:\Users\Hector\Desktop\UPC-SOA\appSOA\appCliente\obj\Debug\appCliente.pdb
