@@ -72,7 +72,7 @@ namespace DL
         }
 
 
-        public List<EL_Inscripcion> Get_ListarDatos(Int32 P_CodigoInscripcion, string P_DNI, string P_Nombre, string P_ApellidoPaterno, string P_ApellidoMaterno)
+        public List<EL_Inscripcion> Get_ListarDatos(string P_DNI)
         {
 
             List<EL_Inscripcion> coll = null;
@@ -92,11 +92,7 @@ namespace DL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         ///cmd.Parameters.Add(sqlParams);
-                        cmd.Parameters.AddWithValue("@P_CodigoInscripcion", P_CodigoInscripcion);
                         cmd.Parameters.AddWithValue("@P_DNI", P_DNI);
-                        cmd.Parameters.AddWithValue("@P_Nombre", P_Nombre);
-                        cmd.Parameters.AddWithValue("@P_ApellidoPaterno", P_ApellidoPaterno);
-                        cmd.Parameters.AddWithValue("@P_ApellidoMaterno", P_ApellidoMaterno);
                         cmd.Connection.Open();
 
                         dr = cmd.ExecuteReader();

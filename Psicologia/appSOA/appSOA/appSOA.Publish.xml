@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="D:\Publicar" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="bin/EL.pdb" publishTime="01/30/2014 00:34:30" />
-    <file relUrl="bin/DL.dll" publishTime="01/30/2014 00:34:31" />
+    <file relUrl="bin/EL.pdb" publishTime="02/02/2014 01:56:59" />
+    <file relUrl="bin/DL.dll" publishTime="02/02/2014 03:40:06" />
     <file relUrl="wsInscripcion.asmx" publishTime="01/30/2014 00:35:53" />
-    <file relUrl="bin/DL.pdb" publishTime="01/30/2014 00:34:31" />
-    <file relUrl="bin/BL.dll" publishTime="01/30/2014 00:41:49" />
-    <file relUrl="Web.config" publishTime="01/30/2014 00:49:14" />
-    <file relUrl="bin/BL.pdb" publishTime="01/30/2014 00:41:49" />
-    <file relUrl="bin/appSOA.dll" publishTime="01/30/2014 00:41:50" />
-    <file relUrl="bin/EL.dll" publishTime="01/30/2014 00:34:30" />
-    <file relUrl="bin/appSOA.pdb" publishTime="01/30/2014 00:41:50" />
+    <file relUrl="bin/DL.pdb" publishTime="02/02/2014 03:40:06" />
+    <file relUrl="bin/BL.dll" publishTime="02/02/2014 03:40:07" />
+    <file relUrl="Web.config" publishTime="02/02/2014 02:55:54" />
+    <file relUrl="bin/BL.pdb" publishTime="02/02/2014 03:40:07" />
+    <file relUrl="bin/appSOA.dll" publishTime="02/02/2014 03:40:14" />
+    <file relUrl="bin/EL.dll" publishTime="02/02/2014 01:56:59" />
+    <file relUrl="bin/appSOA.pdb" publishTime="02/02/2014 03:40:14" />
   </publishProfile>
 </publishData>

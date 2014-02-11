@@ -8,8 +8,8 @@ namespace EL
     public class EL_Inscripcion
     {
 
-        private Int32 m_CodigoInscripcion;
-        public Int32 CodigoInscripcion
+        private int m_CodigoInscripcion;
+        public int CodigoInscripcion
         {
             get { return m_CodigoInscripcion; }
             set { m_CodigoInscripcion = value; }
@@ -20,8 +20,8 @@ namespace EL
             get { return m_DNI; }
             set { m_DNI = value; }
         }
-        private Int32? m_Tipo;
-        public Int32? Tipo
+        private int? m_Tipo;
+        public int? Tipo
         {
             get { return m_Tipo; }
             set { m_Tipo = value; }

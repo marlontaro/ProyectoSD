@@ -11,10 +11,10 @@ namespace BL
     {
 
         // Expedientes
-        public List<EL_Inscripcion> Get_ListarDatos(Int32 P_CodigoInscripcion, string P_DNI, string P_Nombre, string P_ApellidoPaterno, string P_ApellidoMaterno)
+        public List<EL_Inscripcion> Get_ListarDatos(string P_DNI)
         {
             DL_Inscripcion p = new DL_Inscripcion();
-            return p.Get_ListarDatos(P_CodigoInscripcion, P_DNI, P_Nombre, P_ApellidoPaterno, P_ApellidoMaterno);
+            return p.Get_ListarDatos(P_DNI);
         }
 
     }

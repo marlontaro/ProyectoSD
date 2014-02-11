@@ -1,0 +1,5 @@
+C:\Users\Hector\Desktop\UPC-SOA\appPsicologia\appPsicologia\appPsicologia\bin\appPsicologia.dll
+C:\Users\Hector\Desktop\UPC-SOA\appPsicologia\appPsicologia\appPsicologia\bin\appPsicologia.pdb
+C:\Users\Hector\Desktop\UPC-SOA\appPsicologia\appPsicologia\appPsicologia\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\UPC-SOA\appPsicologia\appPsicologia\appPsicologia\obj\Debug\appPsicologia.dll
+C:\Users\Hector\Desktop\UPC-SOA\appPsicologia\appPsicologia\appPsicologia\obj\Debug\appPsicologia.pdb

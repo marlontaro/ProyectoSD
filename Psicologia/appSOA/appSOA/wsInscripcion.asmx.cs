@@ -27,7 +27,7 @@ namespace appSOA
         /// Nota: Cuando el WebService esta dentro del CodeBehid se debe poner static: public static ...
         [System.Web.Services.WebMethod]
         [System.Web.Script.Services.ScriptMethod]
-        public List<EL_Inscripcion> Get_ListarDatos(Int32 P_CodigoInscripcion, string P_DNI, string P_Nombre, string P_ApellidoPaterno, string P_ApellidoMaterno)
+        public List<EL_Inscripcion> Get_ListarDatos(string P_DNI)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace appSOA
                 List<EL_Inscripcion> Lista = new List<EL_Inscripcion>();
 
                 BL_Inscripcion p = new BL_Inscripcion();
-                Lista = p.Get_ListarDatos(P_CodigoInscripcion, P_DNI, P_Nombre, P_ApellidoPaterno, P_ApellidoMaterno);
+                Lista = p.Get_ListarDatos(P_DNI);
 
 
                 return Lista;
