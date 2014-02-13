@@ -5,3 +5,10 @@ C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\bin\Debug\EL.pdb
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\DL.dll
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\DL\obj\Debug\DL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\bin\Debug\DL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\bin\Debug\DL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\bin\Debug\EL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\bin\Debug\EL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\obj\Debug\DL.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\obj\Debug\DL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\DL\obj\Debug\DL.pdb

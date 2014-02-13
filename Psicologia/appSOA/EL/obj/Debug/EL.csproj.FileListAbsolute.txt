@@ -3,3 +3,7 @@ C:\Users\Hector\Desktop\UPC-SOA\appSOA\EL\bin\Debug\EL.pdb
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\EL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\EL\obj\Debug\EL.dll
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\EL\obj\Debug\EL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\EL\bin\Debug\EL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\EL\bin\Debug\EL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\EL\obj\Debug\EL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\EL\obj\Debug\EL.pdb

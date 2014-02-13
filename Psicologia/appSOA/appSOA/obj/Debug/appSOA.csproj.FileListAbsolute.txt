@@ -9,3 +9,14 @@ C:\Users\Hector\Desktop\UPC-SOA\appSOA\appSOA\bin\DL.dll
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\appSOA\bin\BL.pdb
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\appSOA\bin\EL.pdb
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\appSOA\bin\DL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\appSOA.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\appSOA.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\BL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\EL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\DL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\BL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\EL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\bin\DL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\obj\Debug\appSOA.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\obj\Debug\appSOA.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\appSOA\obj\Debug\appSOA.pdb

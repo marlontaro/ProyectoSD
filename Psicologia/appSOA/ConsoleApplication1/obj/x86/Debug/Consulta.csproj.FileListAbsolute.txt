@@ -1,0 +1,5 @@
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\ConsoleApplication1\obj\x86\Debug\Consulta.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb

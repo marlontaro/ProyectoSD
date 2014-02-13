@@ -7,3 +7,12 @@ C:\Users\Hector\Desktop\UPC-SOA\appSOA\BL\bin\Debug\EL.pdb
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\BL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\BL\obj\Debug\BL.dll
 C:\Users\Hector\Desktop\UPC-SOA\appSOA\BL\obj\Debug\BL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\BL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\BL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\DL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\EL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\DL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\bin\Debug\EL.pdb
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\obj\Debug\BL.dll
+C:\Users\Administrador\Documents\GitHub\ProyectoSD\Psicologia\appSOA\BL\obj\Debug\BL.pdb
