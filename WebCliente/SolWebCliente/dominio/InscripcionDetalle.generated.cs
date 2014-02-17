@@ -142,6 +142,45 @@ namespace it.dominio
 		    }
 		}
 		
+		private bool _esPsicologica;
+		public virtual bool EsPsicologica 
+		{ 
+		    get
+		    {
+		        return this._esPsicologica;
+		    }
+		    set
+		    {
+		        this._esPsicologica = value;
+		    }
+		}
+		
+		private bool _esDirecccion;
+		public virtual bool EsDirecccion 
+		{ 
+		    get
+		    {
+		        return this._esDirecccion;
+		    }
+		    set
+		    {
+		        this._esDirecccion = value;
+		    }
+		}
+		
+		private bool _esAcademico;
+		public virtual bool EsAcademico 
+		{ 
+		    get
+		    {
+		        return this._esAcademico;
+		    }
+		    set
+		    {
+		        this._esAcademico = value;
+		    }
+		}
+		
 		private Seccion _seccion;
 		public virtual Seccion Seccion 
 		{ 

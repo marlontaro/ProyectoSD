@@ -38,8 +38,7 @@
                     <div class="widget-content">
                          <asp:Panel ID="pnlActivo" runat="server">
                             <div style="padding-top:10px">
-                                <asp:Label ID="lblCodigo" runat="server" Text="0" Visible="false"></asp:Label>
-                                <asp:Label ID="lblCodigoUsuario" runat="server" Text="0" Visible="false"></asp:Label>
+                                <asp:Label ID="lblCodigo" runat="server" Text="0" Visible="false"></asp:Label> 
                     
                                 <asp:Panel ID="pnlOk" runat="server" Visible="false">
                                     <div class="alert alert-success">
@@ -158,7 +157,7 @@
                                                 <div class="controls">
                                                     <asp:DropDownList ID="cboDepartamento" runat="server" AutoPostBack="True" 
                                                         onselectedindexchanged="cboDepartamento_SelectedIndexChanged">
-                                                        <asp:ListItem Text="SELECCIONE" Value="0"></asp:ListItem> 
+                                                       
                                                     </asp:DropDownList>
                                                 </div>                        
                                             </div>
@@ -238,13 +237,11 @@
                                                 UniqueName="temAlmacen" HeaderText="" HeaderStyle-Width="1000px"                                    
                                                 HeaderButtonType="None" Reorderable="False" AllowFiltering="False" >
                                                     <ItemTemplate>
+                                                        
+                                                        <asp:Label ID="lblNro" runat="server" Text='<%# Bind("CodigoInscripcion") %>'></asp:Label>)
 
-                                                        <asp:Label ID="lblCodigo" runat="server" Text='<%# Bind("CodigoInscripcionDetalle") %>'>
-                                                        </asp:Label>
-
-                                                        <asp:Label ID="lblNro" runat="server" Text='<%# Bind("CodigoInscripcion") %>'>
-                                                        </asp:Label>
-
+                                                        <asp:Label ID="lblCodigo" runat="server" Text='<%# Bind("CodigoInscripcionDetalle") %>' Visible="false">
+                                                        </asp:Label> 
 
                                                         <div class="form-horizontal" style="padding-top:5px">
                                     
@@ -268,8 +265,8 @@
                                                                         Buscar MINEDU
                                                                     </asp:LinkButton>
                                                                 </div>
-                                                                <div style="float:left;padding-left:10px">
-                                                                    <asp:Literal ID="LitEduError" runat="server"></asp:Literal>                    
+                                                                <div style="float:left;padding-left:10px;width:480px">
+                                                                    <asp:Literal ID="LitEduMensaje" runat="server"></asp:Literal>                    
                                                                 </div>
 
                                                                 <div style="clear:both">
@@ -399,23 +396,42 @@
                                                                  <div style="clear:both">
                                                                  </div>
                                                             </div> 
-
-                                                            <div style="padding-top:10px;padding-bottom:30px;">
-                                                                 <div style="padding-bottom:10px">
-                                                                    <div style="float:right;padding-right:50px"> 
-                                                                        
-                                                                        <asp:LinkButton ID="lnkEliminar" runat="server" meta:resourcekey="lnkPEliminar" 
-                                                                            CommandName="Eliminar" ToolTip=""  CssClass="btn btn-danger"
-                                                                            CommandArgument='<%# Bind("CodigoInscripcion") %>'>
-                                                                            Eliminar
-                                                                        </asp:LinkButton>      
-
-                                                                    </div>
-                                                                    <div style="clear:both"></div>
-                                                                 </div>   
-                                                                 <hr />   
-                                                            </div>
+                                                             
                                                         </div>
+
+                                                        <div>
+                                                            <div style="padding-left:20px">                                                            
+                                                                <h5>Evaluaciones</h5>
+                                                            </div>
+                                                        <hr />
+                                                        </div> 
+                                                        <div style=" padding-left:180px;padding-bottom:10px">
+                                                              <label class="checkbox inline" >
+                                                            <asp:CheckBox ID="chkPsicologia" runat="server"  />Psicologia
+                                                            </label>
+                                                             <label class="checkbox inline" style="padding-left:20px">
+                                                            <asp:CheckBox ID="chkAcademica" runat="server" />Academico
+                                                            </label>
+                                                             <label class="checkbox inline" style="padding-left:20px">
+                                                            <asp:CheckBox ID="chkDireccion" runat="server"  />Direccion
+                                                            </label>
+                                                        </div>
+
+                                                        <div style="padding-top:10px;padding-bottom:20px;">
+                                                            <div style="padding-bottom:10px">
+                                                            <div style="float:right;padding-right:50px">                                                                        
+                                                                <asp:LinkButton ID="lnkEliminar" runat="server" meta:resourcekey="lnkPEliminar" 
+                                                                    CommandName="Eliminar" ToolTip=""  CssClass="btn btn-danger"
+                                                                    CommandArgument='<%# Bind("CodigoInscripcion") %>'>
+                                                                    Eliminar
+                                                                </asp:LinkButton>      
+
+                                                            </div>
+                                                            <div style="clear:both"></div>
+                                                            </div>   
+                                                            <hr />   
+                                                        </div>
+
 
                                                    </ItemTemplate>
                                              </telerik:GridTemplateColumn>
@@ -424,21 +440,7 @@
                                     </MasterTableView>
                                 </telerik:RadGrid>
                               
-                                   <div style="padding-left:30px">
-                                <h5>Evaluaciones</h5>
-                                <hr />
-                                </div> 
-                                <div style=" padding-left:180px">
-                                      <label class="checkbox inline" >
-                                    <asp:CheckBox ID="chkPsicologia" runat="server"  />Psicologia
-                                    </label>
-                                     <label class="checkbox inline" style="padding-left:20px">
-                                    <asp:CheckBox ID="CheckBox1" runat="server" />Academico
-                                    </label>
-                                     <label class="checkbox inline" style="padding-left:20px">
-                                    <asp:CheckBox ID="CheckBox2" runat="server"  />Direccion
-                                    </label>
-                                </div>
+                               
 
                                  <div class="form-horizontal">
                                     <div class="form-actions">
@@ -447,7 +449,7 @@
                                                 Guardar
                                         </asp:LinkButton>
 
-                                        <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn"  NavigateUrl="~/WebInscripcion.aspx">Volver</asp:HyperLink>
+                                        <asp:HyperLink ID="lnkVolver" runat="server" CssClass="btn"  NavigateUrl="~/WebInscripcion.aspx">Volver</asp:HyperLink>
                                     </div>
                                 </div>
                             </div>

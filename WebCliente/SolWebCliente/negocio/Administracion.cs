@@ -73,9 +73,151 @@ namespace it.negocio
         }
 
 
-        public void InsertarInscripcion(Inscripcion oInscripcion)
-        {
-            
+        public Inscripcion InscripcionInd(int nCodigo) {
+            Inscripcion oInscripcion = new Inscripcion();
+
+            using (DbContext dbContext = new DbContext()) {
+                oInscripcion = (from ent in dbContext.Inscripcions
+                                where ent.CodigoInscripcion == nCodigo
+                                select ent).FirstOrDefault();
+            }
+            return oInscripcion;
         }
+
+        public void InscripcionInsertar(Inscripcion oInscripcion, IList<InscripcionDetalle> oListaDetalle)
+        {
+            using (DbContext dbContext = new DbContext())
+            {
+                dbContext.Add(oInscripcion);
+                dbContext.SaveChanges();
+
+                foreach (InscripcionDetalle oDetalle in oListaDetalle)
+                {
+                    oDetalle.CodigoInscripcion = oInscripcion.CodigoInscripcion;
+                    oDetalle.Seccion = null;
+                    dbContext.Add(oDetalle);
+                    dbContext.SaveChanges();
+
+                    // insertar evaluacion
+
+                    if (oDetalle.EsAcademico == true)
+                    {
+                        Usuario oUAcademica = new Usuario();
+                        oUAcademica = (from ent in dbContext.Usuarios
+                                       from per in ent.Perfils
+                                       where per.Nombre.Equals("Aprobador Academico", StringComparison.CurrentCultureIgnoreCase)
+                                       select ent).Distinct().FirstOrDefault();
+
+                        // fecha 
+                        DateTime dFechaConsulta = new DateTime();
+
+                        Evaluacion oTAcademica = new Evaluacion();
+                        oTAcademica = (from ent in dbContext.Evaluacions
+                                       where ent.Tipo == 1
+                                       select ent).LastOrDefault();
+
+                        if (oTAcademica != null)
+                        {
+                            if (oTAcademica.CodigoEvaluacion != 0)
+                            {
+                                dFechaConsulta = oTAcademica.Fecha.Value.AddMinutes(30);
+
+                            }
+                            else {
+                                dFechaConsulta = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,
+                                                    9,0,0);
+                            }
+                        }
+                        else {
+                            dFechaConsulta = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                9, 0, 0);
+                        }
+
+                        Evaluacion oAcademica = new Evaluacion();
+                        oAcademica.CodigoInscripcionDetalle = oDetalle.CodigoInscripcionDetalle;
+                        oAcademica.Tipo = 1; //academico
+                        oAcademica.CodigoUsuario = oUAcademica.CodigoUsuario;
+                        oAcademica.Fecha = dFechaConsulta;
+                        oAcademica.Evaluador = String.Format("{0} {1} {2}", oUAcademica.Persona.Nombre, oUAcademica.Persona.ApellidoPaterno, oUAcademica.Persona.ApellidoMaterno);
+                        dbContext.Add(oAcademica);
+                        dbContext.SaveChanges();
+                    }
+
+                    if (oDetalle.EsDirecccion == true)
+                    {
+                        Usuario oUDireccion = new Usuario();
+                        oUDireccion = (from ent in dbContext.Usuarios
+                                       from per in ent.Perfils
+                                       where per.Nombre.Equals("Aprobador Director", StringComparison.CurrentCultureIgnoreCase)
+                                       select ent).Distinct().FirstOrDefault();
+
+                        // fecha 
+                        DateTime dFechaConsulta = new DateTime();
+
+                        Evaluacion oTAcademica = new Evaluacion();
+                        oTAcademica = (from ent in dbContext.Evaluacions
+                                       where ent.Tipo == 1
+                                       select ent).LastOrDefault();
+
+                        if (oTAcademica != null)
+                        {
+                            if (oTAcademica.CodigoEvaluacion != 0)
+                            {
+                                dFechaConsulta = oTAcademica.Fecha.Value.AddMinutes(30);
+
+                            }
+                            else
+                            {
+                                dFechaConsulta = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                    9, 0, 0);
+                            }
+                        }
+                        else
+                        {
+                            dFechaConsulta = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                                                9, 0, 0);
+                        }
+
+                        Evaluacion oDireccion = new Evaluacion();
+                        oDireccion.CodigoInscripcionDetalle = oDetalle.CodigoInscripcionDetalle;
+                        oDireccion.Tipo = 3; //direccion
+                        oDireccion.CodigoUsuario = oUDireccion.CodigoUsuario;
+
+
+                        dbContext.Add(oDireccion);
+                        dbContext.SaveChanges();
+
+                    }
+
+                }
+            }
+        }
+
+        public void InscripcionEditar(Inscripcion oInscripcion, IList<InscripcionDetalle> oListaDetalle) {
+            Inscripcion oTInscripcion = new Inscripcion();
+
+            using (DbContext dbContext = new DbContext())
+            { 
+                oTInscripcion = (from ent in dbContext.Inscripcions
+                                     where ent.CodigoInscripcion == oInscripcion.CodigoInscripcion
+                                select ent).FirstOrDefault();
+                
+                if (oTInscripcion != null) {
+                    oTInscripcion.DNI = oInscripcion.DNI;
+                    oTInscripcion.Nombre = oInscripcion.Nombre;
+                    oTInscripcion.ApellidoPaterno = oInscripcion.ApellidoPaterno;
+                    oTInscripcion.ApellidoMaterno = oInscripcion.ApellidoMaterno;
+                    oTInscripcion.Direccion = oInscripcion.Direccion ;
+                    oTInscripcion.CodigoUbigeo = oInscripcion.CodigoUbigeo ;
+                    oTInscripcion.Tipo = oInscripcion.Tipo ;
+                    oTInscripcion.Telefono = oInscripcion.Telefono;
+
+                    dbContext.SaveChanges();
+                }
+
+            }
+        }
+
+
     }
 }

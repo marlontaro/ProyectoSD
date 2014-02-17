@@ -48,13 +48,37 @@
                         </div>
                     </ItemTemplate>  
                     <Items>
-                        <telerik:RadMenuItem Width="200px" Text="TablaA">
+                        <telerik:RadMenuItem Width="200px" Text="ProcesoA">
                             <ItemTemplate>                               
                                     
-                                   <asp:Panel ID="Panel1" runat="server">   
+                                   <asp:Panel ID="pnlInscripcion" runat="server">   
                                       <div style="height:30px;" class="demolink"> 
-                                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/WebInscripcion.aspx">
-                                            <asp:Label ID="Label1" runat="server" Text="Inscripcion" Font-Size="16px"></asp:Label>
+                                            <asp:HyperLink ID="lnkInscripcion" runat="server" NavigateUrl="~/WebInscripcion.aspx">
+                                            <asp:Label ID="lblInscripcion" runat="server" Text="Inscripcion" Font-Size="16px"></asp:Label>
+                                            </asp:HyperLink>
+                                      </div>
+                                   </asp:Panel>
+
+                                   <asp:Panel ID="pnlAprobacionAcademica" runat="server">   
+                                      <div style="height:30px;" class="demolink"> 
+                                            <asp:HyperLink ID="lnkAprobacionAcademico" runat="server" NavigateUrl="~/WebAprobacionAcademica.aspx">
+                                            <asp:Label ID="lblAprobacionAcademica" runat="server" Text="Aprobacion Academica" Font-Size="16px"></asp:Label>
+                                            </asp:HyperLink>
+                                      </div>
+                                   </asp:Panel>
+
+                                   <asp:Panel ID="pnlAprobacionDireccion" runat="server">   
+                                      <div style="height:30px;" class="demolink"> 
+                                            <asp:HyperLink ID="lnkAprobacionDireccion" runat="server" NavigateUrl="~/WebAprobacionDireccion.aspx">
+                                            <asp:Label ID="lblAprobacionDireccion" runat="server" Text="Aprobacion Direccion" Font-Size="16px"></asp:Label>
+                                            </asp:HyperLink>
+                                      </div>
+                                   </asp:Panel>
+
+                                    <asp:Panel ID="pnlMatricula" runat="server">   
+                                      <div style="height:30px;" class="demolink"> 
+                                            <asp:HyperLink ID="lnkMatricula" runat="server" NavigateUrl="~/WebMatricula.aspx">
+                                            <asp:Label ID="lblMatricula" runat="server" Text="Matricula" Font-Size="16px"></asp:Label>
                                             </asp:HyperLink>
                                       </div>
                                    </asp:Panel>
@@ -81,26 +105,26 @@
                         <telerik:RadMenuItem Width="200px" Text="TablaA">
                             <ItemTemplate>                               
                                     
-                                   <asp:Panel ID="Panel1" runat="server">   
+                                   <asp:Panel ID="pnlPeriodo" runat="server">   
                                       <div style="height:30px;" class="demolink"> 
-                                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/WebSeccion.aspx">
-                                                <asp:Label ID="Label1" runat="server" Text="Periodo" Font-Size="16px"></asp:Label>
+                                             <asp:HyperLink ID="lnkPeriodo" runat="server" NavigateUrl="~/WebSeccion.aspx">
+                                                <asp:Label ID="lblPeriodo" runat="server" Text="Periodo" Font-Size="16px"></asp:Label>
                                              </asp:HyperLink>
                                       </div>
                                    </asp:Panel> 
 
-                                   <asp:Panel ID="pnlUsuario" runat="server">   
+                                   <asp:Panel ID="pnlSeccion" runat="server">   
                                       <div style="height:30px;" class="demolink"> 
-                                            <asp:HyperLink ID="lnkUsuario" runat="server" NavigateUrl="~/WebPagina.aspx">
-                                                <asp:Label ID="lblUsuario" runat="server" Text="Seccion" Font-Size="16px"></asp:Label>
+                                            <asp:HyperLink ID="lnkSeccion" runat="server" NavigateUrl="~/WebPagina.aspx">
+                                                <asp:Label ID="lblSeccion" runat="server" Text="Seccion" Font-Size="16px"></asp:Label>
                                             </asp:HyperLink> 
                                       </div>
                                    </asp:Panel> 
 
-                                   <asp:Panel ID="pnlPerfil" runat="server">   
+                                   <asp:Panel ID="pnlUbigeo" runat="server">   
                                       <div style="height:30px;" class="demolink"> 
-                                             <asp:HyperLink ID="lnkPerfil" runat="server" NavigateUrl="~/WebPlantilla.aspx">
-                                                <asp:Label ID="lblPerfil" runat="server" Text="Ubigeo" Font-Size="16px"></asp:Label>
+                                             <asp:HyperLink ID="lnkUbigeo" runat="server" NavigateUrl="~/WebPlantilla.aspx">
+                                                <asp:Label ID="lblUbigeo" runat="server" Text="Ubigeo" Font-Size="16px"></asp:Label>
                                              </asp:HyperLink>
                                       </div>
                                    </asp:Panel> 

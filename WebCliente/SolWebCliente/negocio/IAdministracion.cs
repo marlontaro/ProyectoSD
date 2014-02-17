@@ -14,6 +14,8 @@ namespace it.negocio
 
         IList<Seccion> ListarSeccion(int nSeccion);
 
-        void InsertarInscripcion(Inscripcion oInscripcion);
+        Inscripcion InscripcionInd(int nCodigo);
+        void InscripcionInsertar(Inscripcion oInscripcion, IList<InscripcionDetalle> oListaDetalle);
+        void InscripcionEditar(Inscripcion oInscripcion, IList<InscripcionDetalle> oListaDetalle);
     }
 }

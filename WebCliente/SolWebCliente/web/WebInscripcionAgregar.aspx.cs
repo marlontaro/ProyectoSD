@@ -8,6 +8,11 @@ using it.dominio;
 using it.negocio;
 using Telerik.Web.UI;
 using it.web.util;
+using System.Net;
+using System.IO;
+using System.Text;
+using System.Xml.Linq;
+ 
 
 public partial class WebInscripcionAgregar : System.Web.UI.Page
 {
@@ -25,20 +30,64 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
             {
                 oUsuario = (Usuario)Session["Usuario"];
                 ListarDepartamento();
-
-                //nuevo
                 IList<InscripcionDetalle> oListaDetalle = new List<InscripcionDetalle>();
-                oListaDetalle.Add(new InscripcionDetalle() {
+
+                if (Request.QueryString["nCode"] != null)
+                {
+                    int nCodigo = int.Parse(Request.QueryString["nCode"].Trim());
+
+                    oAdministracion = new Administracion();
+                    Inscripcion oInscripcion = new Inscripcion();
+                    oInscripcion = oAdministracion.InscripcionInd(nCodigo);
+
+                    //listar
+                    if (oInscripcion != null)
+                    {
+                        lblCodigo.Text = oInscripcion.CodigoInscripcion.ToString().Trim();
+                        txtNombre.Text = oInscripcion.Nombre;
+                        txtApellido.Text = oInscripcion.ApellidoPaterno + " " + oInscripcion.ApellidoMaterno;
+                        txtDNI.Text = oInscripcion.DNI;
+
+                        txtDireccion.Text = oInscripcion.Direccion;
+                        txtTelefono.Text = oInscripcion.Telefono;
+                        cboTipo.SelectedValue = oInscripcion.Tipo.ToString().Trim();
+
+                        if (!String.IsNullOrEmpty(oInscripcion.CodigoUbigeo)) {
+                            String cDepartamento = oInscripcion.CodigoUbigeo.Substring(0, 2)+"0000";
+                            String cProvincia = oInscripcion.CodigoUbigeo.Substring(0, 4) + "00";
+                            cboDepartamento.SelectedValue = cDepartamento;
+                            cboDepartamento_SelectedIndexChanged(sender, e);
+
+                            cboProvincia.SelectedValue = cProvincia;
+                            cboProvincia_SelectedIndexChanged(sender, e);
+
+                            cboDistrito.SelectedValue = oInscripcion.CodigoUbigeo;
+                        }
+
+                        int nCantidad = 0;
+                        foreach (InscripcionDetalle ent in oInscripcion.InscripcionDetalles) {
+                            nCantidad++;
+                            ent.CodigoInscripcion = nCantidad;
+                            oListaDetalle.Add(ent);
+                        }
+                    }
+                }
+                else
+                {
+                    //nuevo                   
+                    oListaDetalle.Add(new InscripcionDetalle()
+                    {
                         CodigoInscripcion = 1,
                         FechaNacimiento = DateTime.Now,
                         Seccion = new Seccion(),
-                        Sexo =1
-                });
+                        Sexo = 1
+                    });                
+                }
+
                 gridDetalle.DataSource = oListaDetalle;
                 gridDetalle.DataBind();
 
                 FormatearGrid(oListaDetalle);
-              
 
             }
             else
@@ -78,6 +127,7 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         TextBox txtHijoDni, txtHijoNombre, txtHijoApellido;
         RadDatePicker dtFecha;
         RadioButton rbHombre, rbMujer, rbOtro;
+        CheckBox chkPsicologia, chkAcademica, chkDireccion;
         DropDownList cboEducacion, cboSeccion;
         int nSexo = 0;
 
@@ -99,6 +149,10 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
             cboEducacion = (DropDownList)gridDetalle.Items[i].FindControl("cboEducacion");
             cboSeccion = (DropDownList)gridDetalle.Items[i].FindControl("cboSeccion");
             
+            chkPsicologia = (CheckBox)gridDetalle.Items[i].FindControl("chkPsicologia");
+            chkAcademica = (CheckBox)gridDetalle.Items[i].FindControl("chkAcademica");
+            chkDireccion = (CheckBox)gridDetalle.Items[i].FindControl("chkDireccion");
+
             if (rbHombre.Checked == true) {
                 nSexo = 1;
             }
@@ -124,6 +178,9 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
                 FechaNacimiento = dtFecha.SelectedDate.Value,
                 Sexo = nSexo,
                 CodigoSeccion = int.Parse(cboSeccion.SelectedValue.Trim()),
+                EsAcademico = chkAcademica.Checked,
+                EsDirecccion = chkDireccion.Checked,
+                EsPsicologica = chkPsicologia.Checked,
                 Seccion = new Seccion() { 
                     Educacion = int.Parse(cboEducacion.SelectedValue.Trim())
                 }
@@ -138,8 +195,8 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         InscripcionDetalle oDetalle;
         RadioButton rbHombre, rbMujer, rbOtro;
         DropDownList cboEducacion, cboSeccion;
-        
-
+        CheckBox chkPsicologia, chkAcademica, chkDireccion;
+       
         using (DbContext dbContext = new DbContext()) {
             oListaSeccion = (from ent in dbContext.Seccions
                              select ent).ToList();
@@ -148,12 +205,16 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         for (int i = 0; i < gridDetalle.Items.Count; i++)
         {
             oDetalle = oLista[i];
-
+             
             rbHombre = (RadioButton)gridDetalle.Items[i].FindControl("rbHombre");
             rbMujer = (RadioButton)gridDetalle.Items[i].FindControl("rbMujer");
             rbOtro = (RadioButton)gridDetalle.Items[i].FindControl("rbOtro");
             cboEducacion = (DropDownList)gridDetalle.Items[i].FindControl("cboEducacion");
             cboSeccion = (DropDownList)gridDetalle.Items[i].FindControl("cboSeccion");
+
+            chkPsicologia = (CheckBox)gridDetalle.Items[i].FindControl("chkPsicologia");
+            chkAcademica = (CheckBox)gridDetalle.Items[i].FindControl("chkAcademica");
+            chkDireccion = (CheckBox)gridDetalle.Items[i].FindControl("chkDireccion");
 
             if (oDetalle.Sexo == 1) {
                 rbHombre.Checked = true;
@@ -164,6 +225,16 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
             }
             else {
                 rbOtro.Checked = true;
+            }
+
+            chkPsicologia.Checked = oDetalle.EsPsicologica;
+            chkAcademica.Checked = oDetalle.EsAcademico;
+            chkDireccion.Checked = oDetalle.EsDirecccion;
+
+            if (oDetalle.CodigoInscripcionDetalle != 0) {
+                chkPsicologia.Enabled = false;
+                chkAcademica.Enabled = false;
+                chkDireccion.Enabled = false;
             }
 
             cboEducacion.SelectedValue = oDetalle.Seccion.Educacion.ToString().Trim();
@@ -196,10 +267,78 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
     #region Acciones
 
     protected void lnkBuscarReniec_Click(object sender, EventArgs e)
-    {
-        //ServicioCloud.NewWebServiceClient oCliente = new ServicioCloud.NewWebServiceClient();
-        //lblDNI.Text =  oCliente.hello(txtDNI.Text);
-        //oCliente = null;
+    { 
+        WebRequest req = WebRequest.Create(String.Format(@"http://servicioreniec.jelasticlw.com.br/ConsultaRENIEC/webresources/alumno?dni={0}", txtDNI.Text));
+        req.Method = "GET";
+
+        HttpWebResponse resp = req.GetResponse() as HttpWebResponse;
+        if (resp.StatusCode == HttpStatusCode.OK)
+        { 
+            XDocument doc; 
+            using (Stream responseStream = resp.GetResponseStream())
+            { 
+                doc = XDocument.Load(responseStream); 
+            }
+
+            XNamespace df = doc.Root.Name.Namespace;
+            string cDni = doc.Root.Element(df + "dni").Value.ToString();
+            string cNombre = doc.Root.Element(df + "nombres").Value.ToString();
+            string cApellido = doc.Root.Element(df + "apellidoPaterno").Value.ToString() + " " + doc.Root.Element(df + "apellidoMaterno").Value.ToString();
+            string cDireccion = doc.Root.Element(df + "direccion").Value.ToString();
+
+            string cDepartamento = doc.Root.Element(df + "departamento").Value.ToString();
+            string cProvincia = doc.Root.Element(df + "provincia").Value.ToString();
+            string cDistrito = doc.Root.Element(df + "distrito").Value.ToString();
+           
+            
+            txtDNI.Text = cDni;
+            txtNombre.Text = cNombre;
+            txtApellido.Text = cApellido;
+            txtDireccion.Text = cDireccion;
+
+
+
+            foreach (ListItem oItem in cboDepartamento.Items)
+            {
+                if (oItem.Text.Equals(cDepartamento.Trim(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    oItem.Selected = true;
+                    cboDepartamento_SelectedIndexChanged(sender, e);
+                    break;
+                }
+                else {
+                    oItem.Selected = false;
+                }
+            }
+
+            foreach (ListItem oItem in cboProvincia.Items)
+            {
+                if (oItem.Text.Equals(cProvincia.Trim(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    oItem.Selected = true;
+                    cboProvincia_SelectedIndexChanged(sender, e);
+                    break;
+                }
+                else
+                {
+                    oItem.Selected = false;
+                }
+            }
+
+            foreach (ListItem oItem in cboDistrito.Items)
+            {
+                if (oItem.Text.Equals(cDistrito.Trim(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    oItem.Selected = true;                    
+                    break;
+                }
+                else
+                {
+                    oItem.Selected = false;
+                }
+            } 
+        }
+
     }
 
     protected void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,7 +427,9 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         RadioButton rbOtro = (RadioButton)item.FindControl("rbOtro");
         DropDownList cboEducacion = (DropDownList)item.FindControl("cboEducacion");
         DropDownList cboSeccion = (DropDownList)item.FindControl("cboSeccion");
-        Literal LitEduError = (Literal)item.FindControl("LitEduError");
+        Literal LitEduMensaje = (Literal)item.FindControl("LitEduMensaje");
+
+
         ServicioMinEdu.DatosEstudianteClient oServicio = new ServicioMinEdu.DatosEstudianteClient();
         ServicioMinEdu.Alumno oAlumno = new ServicioMinEdu.Alumno();
         oAlumno = oServicio.ObtenerAlumno(txtHijoDni.Text.Trim());
@@ -299,7 +440,7 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         {
             if (oAlumno.Nombre != null)
             {
-                LitEduError.Text = "";
+                LitEduMensaje.Text = "";
                 txtHijoNombre.Text = oAlumno.Nombre;
                 txtHijoApellido.Text = oAlumno.ApellidoPaterno + " " + oAlumno.ApellidoMaterno;
                 dtFecha.SelectedDate = DateTime.Parse(oAlumno.FechaNacimiento);
@@ -348,11 +489,13 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
                         oItem.Selected = true;
                     }
                 }
+                oHelper = new Helper();
+                LitEduMensaje.Text = oHelper.DevuelveHtmlMensaje(String.Format("<b>Datos del Alumno:</b> Institucion ({0}), Estado ({1})", oAlumno.Institucion,oAlumno.Estado), Helper.TipoMensaje.informacion);
             }
             else { 
                 //no exite 
                 oHelper = new Helper();
-                LitEduError.Text = oHelper.DevuelveHtmlError("<strong>Error</strong> No Existe Alumno en la Base de Datos de Siagie");
+                LitEduMensaje.Text = oHelper.DevuelveHtmlMensaje("<strong>Error</strong> No Existe Alumno en la Base de Datos de Siagie",Helper.TipoMensaje.error);
             }
         }
     }
@@ -377,6 +520,14 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
             IList<InscripcionDetalle> oListaDetalle = new List<InscripcionDetalle>();
             oListaDetalle = ObtenerDetalle();
             oListaDetalle.RemoveAt(nNro - 1);
+
+            int nContador=0;
+
+            foreach (InscripcionDetalle ent in oListaDetalle) {
+                nContador++;
+                ent.CodigoInscripcion = nContador;
+            }
+
             gridDetalle.DataSource = oListaDetalle;
             gridDetalle.DataBind();
 
@@ -403,47 +554,35 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
    
     protected void lnkGuardar_Click(object sender, EventArgs e)
     {
-        //ServiceReference1.DatosEstudianteClient oServicio = new ServiceReference1.DatosEstudianteClient();
-        //oServicio.ObtenerNotas("");
-        //ServiceReference1.DetalleNota a = new ServiceReference1.DetalleNota();
-        
-        //int nSexo = 0;
-        //if (rbHombre.Checked == true) {
-        //    nSexo = 1;
-        //}
-        //if (rbMujer.Checked == true)
-        //{
-        //    nSexo = 2;
-        //}
-        //if (rbOtro.Checked == true)
-        //{
-        //    nSexo = 3;
-        //}
-        //using (DbContext dbContext = new DbContext()) {
-        //    Inscripcion oInscripcion = new Inscripcion();
-        //    oInscripcion.DNI = txtDNI.Text;
-        //    oInscripcion.Nombre = txtNombre.Text;
-        //    oInscripcion.ApellidoPaterno = txtApellido.Text;
-        //    oInscripcion.ApellidoMaterno = "";
-        //    oInscripcion.Direccion = txtDireccion.Text;
-        //    oInscripcion.CodigoUbigeo = cboDistrito.SelectedValue.Trim();
-        //    oInscripcion.Tipo = int.Parse(cboTipo.SelectedValue.Trim());
-        //    oInscripcion.FechaInscripcion = DateTime.Now;
-        //    oInscripcion.Telefono = txtTelefono.Text;
-        //    dbContext.Add(oInscripcion);
-        //    dbContext.SaveChanges();
-        //    InscripcionDetalle oDetalle = new InscripcionDetalle();
-        //    oDetalle.CodigoInscripcion = oInscripcion.CodigoInscripcion;
-        //    oDetalle.Nombre = txtHijoNombre.Text;
-        //    oDetalle.ApellidoPaterno = txtHijoApellido.Text;
-        //    oDetalle.ApellidoMaterno = "";
-        //    oDetalle.DNI = txtHijoDni.Text;
-        //    oDetalle.FechaNacimiento = dtFecha.SelectedDate.Value;
-        //    oDetalle.CodigoSeccion = int.Parse(cboSeccion.SelectedValue);
-        //    oDetalle.Sexo = nSexo;
-        //    dbContext.Add(oDetalle);
-        //    dbContext.SaveChanges();
-        //}
+        int nCodigo = int.Parse(lblCodigo.Text);
+        oAdministracion = new Administracion();
+
+        Inscripcion oInscripcion = new Inscripcion();
+        oInscripcion.DNI = txtDNI.Text;
+        oInscripcion.Nombre = txtNombre.Text;
+        oInscripcion.ApellidoPaterno = txtApellido.Text;
+        oInscripcion.ApellidoMaterno = "";
+        oInscripcion.Direccion = txtDireccion.Text;
+        oInscripcion.CodigoUbigeo = cboDistrito.SelectedValue.Trim();
+        oInscripcion.Tipo = int.Parse(cboTipo.SelectedValue.Trim());        
+        oInscripcion.Telefono = txtTelefono.Text;
+
+        IList<InscripcionDetalle> oListaDetalle = new List<InscripcionDetalle>();
+        oListaDetalle = ObtenerDetalle();
+
+        if (nCodigo == 0)
+        { 
+            oInscripcion.FechaInscripcion = DateTime.Now;
+            oAdministracion.InscripcionInsertar(oInscripcion, oListaDetalle);
+
+            //insertar 
+
+            Response.Redirect(String.Format("WebInscripcionAgregar.aspx?nCode={0}",oInscripcion.CodigoInscripcion.ToString().Trim()));
+        }
+        else {
+            oAdministracion.InscripcionEditar(oInscripcion, oListaDetalle);
+             
+        }
     }
 
     #endregion

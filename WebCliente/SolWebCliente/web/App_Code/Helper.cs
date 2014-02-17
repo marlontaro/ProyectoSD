@@ -5,14 +5,21 @@ using System.Web;
 using System.Text.RegularExpressions;
 using it.dominio;
 
-/// <summary>
-/// Descripción breve de Helper
-/// </summary>
 namespace it.web.util
 {
     public class Helper
     {
-         
+
+        public bool DevuelvePerfil(String cPerfil,IList<Perfil> oLista) {
+            bool bValida = false;
+
+            foreach (Perfil oPerfil in oLista) {
+                if (oPerfil.Nombre.Equals(cPerfil, StringComparison.CurrentCultureIgnoreCase)) {
+                    bValida = true; break;
+                }
+            }
+            return bValida;
+        }
 
         public string DevuelveSinConexion()
         {
@@ -114,10 +121,25 @@ namespace it.web.util
 
         }
 
-        public string DevuelveHtmlError(String cMensaje) {
+        public enum TipoMensaje { ok=1, informacion=2, error=3, alerta=4 }; 
+
+        public string DevuelveHtmlMensaje(String cMensaje, TipoMensaje eTipo)
+        {
             string cHtml = "";
-            cHtml = String.Format("<div class=\"alert alert-error\">{0}</div>",cMensaje);
+            string cCase = "";
+
+            switch (eTipo)
+            {
+                case TipoMensaje.ok: cCase = "alert-success"; break;
+                case TipoMensaje.informacion: cCase = "alert-info"; break;
+                case TipoMensaje.error: cCase = "alert-error"; break;
+                case TipoMensaje.alerta: cCase = "alert-block"; break;
+            }
+
+
+            cHtml = String.Format("<div class=\"alert {0}\">{1}</div>", cCase,cMensaje);
             return cHtml;
         }
+         
     }
 }

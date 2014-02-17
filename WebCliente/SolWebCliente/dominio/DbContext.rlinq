@@ -242,7 +242,16 @@
           <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="_dNI" property="DNI" behavior="readwrite" uniqueId="d8f974b0-a384-417e-af77-82994b4f5876" type="System.String">
-          <orm:column nullable="true" length="20" name="DNI" scale="0" sql-type="varchar" ado-type="StringVariableLength" />
+          <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_esPsicologica" property="EsPsicologica" behavior="readwrite" uniqueId="3547cec4-09d6-4ed0-9606-4f6eb756cca5" type="System.Boolean">
+          <orm:column nullable="false" length="0" name="EsPsicologica" scale="0" sql-type="bit" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_esDirecccion" property="EsDirecccion" behavior="readwrite" uniqueId="e5f4bd8d-471d-41d7-b58d-c74c2f0c9329" type="System.Boolean">
+          <orm:column nullable="false" length="0" name="EsDirecccion" scale="0" sql-type="bit" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_esAcademico" property="EsAcademico" behavior="readwrite" uniqueId="ccea608e-976b-4c3f-b955-d85c3d01c674" type="System.Boolean">
+          <orm:column nullable="false" length="0" name="EsAcademico" scale="0" sql-type="bit" ado-type="Bit" />
         </orm:field>
         <orm:field name="_seccion" property="Seccion" behavior="readwrite" uniqueId="44469f27-cbde-4766-a02d-6083cea1e87f" type="it.dominio.Seccion">
           <orm:reference uniqueId="29f74980-2a87-44e3-818b-54281ff11d42">
@@ -295,7 +304,7 @@
           <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
         </orm:field>
         <orm:field name="_telefono" property="Telefono" behavior="readwrite" uniqueId="3dd3fae8-159e-42da-9e09-ec753f2ab73e" type="System.String">
-          <orm:column nullable="true" length="50" name="Telefono" scale="0" sql-type="varchar" ado-type="StringVariableLength" />
+          <orm:column name="Telefono" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
         </orm:field>
         <orm:field name="_ubigeo" property="Ubigeo" behavior="readwrite" uniqueId="66b4f62b-429d-4a76-9287-d5f921d21048" type="it.dominio.Ubigeo">
           <orm:reference uniqueId="01a631d6-136d-4441-9704-c36349a96b98">
@@ -530,7 +539,10 @@
         <orm:column name="FechaNacimiento" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         <orm:column name="Sexo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column nullable="true" length="20" name="DNI" scale="0" sql-type="varchar" ado-type="StringVariableLength" />
+        <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
+        <orm:column nullable="false" length="0" name="EsPsicologica" scale="0" sql-type="bit" ado-type="Bit" />
+        <orm:column nullable="false" length="0" name="EsDirecccion" scale="0" sql-type="bit" ado-type="Bit" />
+        <orm:column nullable="false" length="0" name="EsAcademico" scale="0" sql-type="bit" ado-type="Bit" />
         <orm:constraint name="R_15" destination-table="Seccion">
           <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -548,7 +560,7 @@
         <orm:column name="FechaInscripcion" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
         <orm:column name="Direccion" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
         <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
-        <orm:column nullable="true" length="50" name="Telefono" scale="0" sql-type="varchar" ado-type="StringVariableLength" />
+        <orm:column name="Telefono" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
         <orm:constraint name="R_9" destination-table="Ubigeo">
           <orm:column name="CodigoUbigeo" sql-type="varchar" nullable="false" length="6" scale="0" ado-type="StringVariableLength" />
         </orm:constraint>
@@ -828,6 +840,9 @@
       <Property Id="0f5dc841-c4c6-4fef-843f-e4c47df8cc85" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="_nombre" />
       <Property Id="5499056c-7c4b-4840-9cf1-49fbc0c862b5" name="Sexo" type="Int32" label="Sexo : Int32" kind="Persistent" fieldName="_sexo" />
       <Property Id="d8f974b0-a384-417e-af77-82994b4f5876" name="DNI" label="DNI : String" kind="Persistent" fieldName="_dNI" />
+      <Property Id="3547cec4-09d6-4ed0-9606-4f6eb756cca5" name="EsPsicologica" type="Boolean" label="EsPsicologica : Boolean" kind="Persistent" fieldName="_esPsicologica" />
+      <Property Id="e5f4bd8d-471d-41d7-b58d-c74c2f0c9329" name="EsDirecccion" type="Boolean" label="EsDirecccion : Boolean" kind="Persistent" fieldName="_esDirecccion" />
+      <Property Id="ccea608e-976b-4c3f-b955-d85c3d01c674" name="EsAcademico" type="Boolean" label="EsAcademico : Boolean" kind="Persistent" fieldName="_esAcademico" />
       <AssociationTargets>
         <Association Id="29f74980-2a87-44e3-818b-54281ff11d42" SourceMultiplicity="One" name="InscripcionDetalleHasSeccion">
           <DomainClassMoniker name="/DbContext/Seccion" />
