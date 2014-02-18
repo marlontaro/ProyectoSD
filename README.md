@@ -14,6 +14,7 @@ Blogs:
 			- Richard Chavez - U201222528
 			- Marlon Cordova - U201300697
 			- Alfredo Contreras - U201200663
+			  http://alfredocontreras.blog.com.es/
 			- Cesar Romero - http://tips-en-net.webnode.es/
 			- Yicela Vega - http://myddsupcblog.blogspot.com/
 
