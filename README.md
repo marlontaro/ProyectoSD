@@ -8,6 +8,14 @@ Mockups: 	https://loschabelos.mybalsamiq.com/projects/proyectocolegio/grid
 
 Documentación:	
 
+Blogs:
+	Joan Chafloque - 
+	Richard Chavez - 
+	Marlon Cordova - 
+	Alfredo Contreras - 
+	Cesar Romero - http://tips-en-net.webnode.es/
+	Yicela Vega - 
+	
 
 Github: 
 
