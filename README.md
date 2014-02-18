@@ -12,7 +12,7 @@ Blogs:
 	
 			- Joan Chafloque - U201300007
 			- Richard Chavez - U201222528
-			- Marlon Cordova - U201300697
+			- Marlon Cordova - http://proyectodsdupc.blogspot.com/
 			- Alfredo Contreras - U201200663
 			  http://alfredocontreras.blog.com.es/
 			- Cesar Romero - http://tips-en-net.webnode.es/
