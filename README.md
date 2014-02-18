@@ -23,7 +23,7 @@ Blogs:
 			- Yicela Vega
 			  http://myddsupcblog.blogspot.com/
 
-Github: 
+Github: https://github.com/marlontaro/ProyectoSD
 
 			- Joan Chafloque - U201300007
 			- Richard Chavez - U201222528
