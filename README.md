@@ -6,7 +6,7 @@ Trello: 	https://trello.com/b/vZdywIoB/proyecto-colegio
 
 Mockups: 	https://loschabelos.mybalsamiq.com/projects/proyectocolegio/grid
 
-Documentación:	
+Documentación:	https://docs.google.com/document/d/17C9PvcDLuJ2orb6xjINHNIKj_xz3NI2jcIZM33yNyE8/pub
 
 Blogs:
 	
@@ -15,7 +15,7 @@ Blogs:
 			- Marlon Cordova - U201300697
 			- Alfredo Contreras - U201200663
 			- Cesar Romero - http://tips-en-net.webnode.es/
-			- Yicela Vega - U201222868
+			- Yicela Vega - http://myddsupcblog.blogspot.com/
 
 	
 
