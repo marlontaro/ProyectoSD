@@ -620,8 +620,12 @@
         <orm:result-sets />
       </orm:procedure>
       <orm:procedure name="usp_EvaluacionListar">
-        <orm:procedure-parameter nullable="true" length="0" name="Tipo" scale="0" sql-type="int" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
-        <orm:procedure-parameter nullable="true" length="0" name="CodigoUsuario" scale="0" sql-type="int" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+        <orm:procedure-parameter name="Tipo" sql-type="int" length="0" scale="0" nullable="true" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+        <orm:procedure-parameter name="CodigoUsuario" sql-type="int" length="0" scale="0" nullable="true" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+        <orm:result-sets />
+      </orm:procedure>
+      <orm:procedure name="usp_AlumnoListar">
+        <orm:procedure-parameter nullable="true" length="0" name="Anio" scale="0" sql-type="int" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
       </orm:procedure>
     </orm:schema>
@@ -1123,6 +1127,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="654b60b6-ec1b-4670-966f-da8454ffcbf3">
+      <domainMethod name="AlumnoListar" storedProcedureName="'usp_AlumnoListar'">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="5d23c1ff-9ff7-4a67-ab42-44a68e19e715">
+            <domainMethodReturnShapeMoniker name="/DbContext/AlumnoListarEntidad" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="541a9126-5c59-4149-a1f5-92d41e846ddf">
@@ -1145,6 +1158,18 @@
         <Property Id="3b816eec-231a-4cb2-9e2c-b0619628803d" name="Evaluador" type="System.String" label="Evaluador : System.String" nullable="true" fieldName="_evaluador" />
         <Property Id="590afea2-c948-4c07-b428-f5537c968123" name="Respuesta" type="System.String" label="Respuesta : System.String" fieldName="_respuesta" />
         <Property Id="2ac16f68-973c-41b9-8b09-971372de103b" name="Observacion" type="System.String" label="Observacion : System.String" fieldName="_observacion" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="76c485df-50d0-4498-8125-ea6d5ccbbcf5">
+      <domainMethodReturnShape name="AlumnoListarEntidad" namespace="it.dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="6d89bbc7-c2c0-408d-95c8-b3250d518d55" name="CodigoPersona" type="System.Int32" label="CodigoPersona : System.Int32" fieldName="_codigoPersona" />
+        <Property Id="a6fbc783-8be4-48d2-9c59-36644bddc978" name="DNI" type="System.String" label="DNI : System.String" fieldName="_dNI" />
+        <Property Id="89159159-c7c0-4a8e-867a-c43a8c1a6870" name="Alumno" type="System.String" label="Alumno : System.String" nullable="true" fieldName="_alumno" />
+        <Property Id="1a03ad7c-0864-4ab9-9a70-137bbbac1c81" name="Periodo" type="System.Int32" label="Periodo : System.Int32" fieldName="_periodo" />
+        <Property Id="25d8db08-c844-45ac-aa6b-316c8a092b08" name="FechaNacimiento" type="System.DateTime" label="FechaNacimiento : System.DateTime" nullable="true" fieldName="_fechaNacimiento" />
+        <Property Id="85606053-a519-4382-b4d9-fb2d108bf877" name="Sexo" type="System.String" label="Sexo : System.String" nullable="true" fieldName="_sexo" />
+        <Property Id="2b5257d8-110d-412f-8680-4eebdf5a29d6" name="Educacion" type="System.String" label="Educacion : System.String" nullable="true" fieldName="_educacion" />
+        <Property Id="416d2e5a-5139-4aa3-ab86-ae5916b59076" name="Seccion" type="System.String" label="Seccion : System.String" fieldName="_seccion" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

@@ -202,6 +202,25 @@ namespace it.dominio
 	    	return queryResult;
 		}
 		
+		public IEnumerable<it.dominio.AlumnoListarEntidad> AlumnoListar(int? anio)
+		{
+			OAParameter parameterAnio = new OAParameter();
+			parameterAnio.ParameterName = "Anio";
+			if(anio.HasValue)
+			{
+				parameterAnio.Value = anio.Value;
+			}
+			else
+			{
+				parameterAnio.DbType = DbType.Int32;		
+				parameterAnio.Value = DBNull.Value;
+			}
+
+			IEnumerable<it.dominio.AlumnoListarEntidad> queryResult = this.ExecuteQuery<it.dominio.AlumnoListarEntidad>("[usp_AlumnoListar]", CommandType.StoredProcedure, parameterAnio);
+	        
+	    	return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -286,6 +305,8 @@ namespace it.dominio
 		IEnumerable<it.dominio.InscripcionListarEntidad> InscripcionListar();
 
 		IEnumerable<it.dominio.EvaluacionListarEntidad> EvaluacionListar(int? tipo, int? codigoUsuario);
+
+		IEnumerable<it.dominio.AlumnoListarEntidad> AlumnoListar(int? anio);
 
 	}
 }

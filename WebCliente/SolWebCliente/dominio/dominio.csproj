@@ -45,6 +45,9 @@
     <Compile Include="Alumno.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="AlumnoListarEntidad.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="AlumnoPeriodo.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>

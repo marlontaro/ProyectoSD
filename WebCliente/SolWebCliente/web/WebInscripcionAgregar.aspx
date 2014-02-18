@@ -418,14 +418,18 @@
                                                         </div>
 
                                                         <div style="padding-top:10px;padding-bottom:20px;">
-                                                            <div style="padding-bottom:10px">
-                                                            <div style="float:right;padding-right:50px">                                                                        
+                                                            <div style="padding-bottom:10px">                                                             
+                                                             
+                                                            <div style="float:right;padding-right:50px">          
+                                                                <asp:HyperLink ID="lnkMatricula" runat="server"  CssClass="btn btn-success" Visible="false">Matricula</asp:HyperLink>
+                                                                &nbsp;                                                                
                                                                 <asp:LinkButton ID="lnkEliminar" runat="server" meta:resourcekey="lnkPEliminar" 
                                                                     CommandName="Eliminar" ToolTip=""  CssClass="btn btn-danger"
                                                                     CommandArgument='<%# Bind("CodigoInscripcion") %>'>
                                                                     Eliminar
                                                                 </asp:LinkButton>      
-
+                                                              
+                                                                
                                                             </div>
                                                             <div style="clear:both"></div>
                                                             </div>   

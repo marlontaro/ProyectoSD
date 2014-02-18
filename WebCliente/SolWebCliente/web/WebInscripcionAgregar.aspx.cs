@@ -196,7 +196,8 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         RadioButton rbHombre, rbMujer, rbOtro;
         DropDownList cboEducacion, cboSeccion;
         CheckBox chkPsicologia, chkAcademica, chkDireccion;
-       
+        HyperLink lnkMatricula;
+
         using (DbContext dbContext = new DbContext()) {
             oListaSeccion = (from ent in dbContext.Seccions
                              select ent).ToList();
@@ -205,7 +206,7 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
         for (int i = 0; i < gridDetalle.Items.Count; i++)
         {
             oDetalle = oLista[i];
-             
+            lnkMatricula = (HyperLink)gridDetalle.Items[i].FindControl("lnkMatricula");
             rbHombre = (RadioButton)gridDetalle.Items[i].FindControl("rbHombre");
             rbMujer = (RadioButton)gridDetalle.Items[i].FindControl("rbMujer");
             rbOtro = (RadioButton)gridDetalle.Items[i].FindControl("rbOtro");
@@ -235,6 +236,8 @@ public partial class WebInscripcionAgregar : System.Web.UI.Page
                 chkPsicologia.Enabled = false;
                 chkAcademica.Enabled = false;
                 chkDireccion.Enabled = false;
+                lnkMatricula.Visible = true;
+                lnkMatricula.NavigateUrl = String.Format("~/WebMatriculaAgregar.aspx?nCodigoInscripcion={0}", oDetalle.CodigoInscripcionDetalle);
             }
 
             cboEducacion.SelectedValue = oDetalle.Seccion.Educacion.ToString().Trim();
