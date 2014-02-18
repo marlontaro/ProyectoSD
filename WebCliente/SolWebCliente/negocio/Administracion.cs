@@ -137,8 +137,12 @@ namespace it.negocio
                         oAcademica.CodigoInscripcionDetalle = oDetalle.CodigoInscripcionDetalle;
                         oAcademica.Tipo = 1; //academico
                         oAcademica.CodigoUsuario = oUAcademica.CodigoUsuario;
+
                         oAcademica.Fecha = dFechaConsulta;
+                        oAcademica.Respuesta = 1;
+                        oAcademica.Observacion = "";
                         oAcademica.Evaluador = String.Format("{0} {1} {2}", oUAcademica.Persona.Nombre, oUAcademica.Persona.ApellidoPaterno, oUAcademica.Persona.ApellidoMaterno);
+                        
                         dbContext.Add(oAcademica);
                         dbContext.SaveChanges();
                     }
@@ -156,7 +160,7 @@ namespace it.negocio
 
                         Evaluacion oTAcademica = new Evaluacion();
                         oTAcademica = (from ent in dbContext.Evaluacions
-                                       where ent.Tipo == 1
+                                       where ent.Tipo == 3
                                        select ent).LastOrDefault();
 
                         if (oTAcademica != null)
@@ -183,6 +187,11 @@ namespace it.negocio
                         oDireccion.Tipo = 3; //direccion
                         oDireccion.CodigoUsuario = oUDireccion.CodigoUsuario;
 
+                        oDireccion.Fecha = dFechaConsulta;
+                        oDireccion.Respuesta = 1;
+                        oDireccion.Observacion = "";
+                        oDireccion.Evaluador = String.Format("{0} {1} {2}", oUDireccion.Persona.Nombre, oUDireccion.Persona.ApellidoPaterno, oUDireccion.Persona.ApellidoMaterno);
+                     
 
                         dbContext.Add(oDireccion);
                         dbContext.SaveChanges();

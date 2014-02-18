@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WebAprobacionAcademica.aspx.cs" Inherits="WebAprobacionAcademica" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WebAprobacionDireccion.aspx.cs" Inherits="WebAprobacionDireccion" %>
 <%@ Register Assembly="Telerik.OpenAccess.Web.40" Namespace="Telerik.OpenAccess.Web"
     TagPrefix="telerik" %>
 
@@ -24,8 +23,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        
-        <!--Menu-->
+      <!--Menu-->
         <usrpagina:Menu ID="usrMenu" runat="server" />
         <!--Menu-->
         <div class="container-fluid" style="min-width:940px">
@@ -33,7 +31,7 @@
               <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title">
-                        <h5><asp:Label ID="lblInscripcion" runat="server" Text="Aprobacion Academica"></asp:Label></h5>                            
+                        <h5><asp:Label ID="lblInscripcion" runat="server" Text="Aprobacion Direccion"></asp:Label></h5>                            
                    </div>
 
                    <div class="widget-content">
@@ -85,7 +83,7 @@
                                                  <tr>
                                                  <td>
                                                       <asp:HyperLink ID="lnkEditar" runat="server" 
-                                                    NavigateUrl='<%# "~/WebAprobacionAcademicaDetalle.aspx?nCode="+Eval("CodigoEvaluacion") %>' ToolTip="Edit" ><i class="icon-edit"></i></asp:HyperLink>
+                                                    NavigateUrl='<%# "~/WebAprobacionDireccionDetalle.aspx?nCode="+Eval("CodigoEvaluacion") %>' ToolTip="Edit" ><i class="icon-edit"></i></asp:HyperLink>
                                     
                                                  </td>
                                                  <td>
@@ -175,7 +173,6 @@
         </div>
          <usrpagina:PiePagina ID="usrPie" runat="server" />
     </div>
-
 
 
     </form>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using it.dominio;
 using it.web.util;
 
-public partial class WebAprobacionAcademica : System.Web.UI.Page
+public partial class WebAprobacionDireccion : System.Web.UI.Page
 {
     Usuario oTUsuario;
     Helper oHelper;
@@ -21,7 +21,8 @@ public partial class WebAprobacionAcademica : System.Web.UI.Page
                 oTUsuario = (Usuario)Session["Usuario"];
                 gvwPerfiles.Rebind();
             }
-            else {
+            else
+            {
                 pnlActivo.Visible = false;
                 pnlInactivo.Visible = true;
                 oHelper = new Helper();
@@ -38,7 +39,7 @@ public partial class WebAprobacionAcademica : System.Web.UI.Page
             oTUsuario = (Usuario)Session["Usuario"];
             using (DbContext db = new DbContext())
             {
-                e.Result = db.EvaluacionListar(1, oTUsuario.CodigoUsuario);
+                e.Result = db.EvaluacionListar(3, oTUsuario.CodigoUsuario);
             }
         }
     }

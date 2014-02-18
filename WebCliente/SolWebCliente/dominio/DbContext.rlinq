@@ -245,13 +245,13 @@
           <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
         </orm:field>
         <orm:field name="_esPsicologica" property="EsPsicologica" behavior="readwrite" uniqueId="3547cec4-09d6-4ed0-9606-4f6eb756cca5" type="System.Boolean">
-          <orm:column nullable="false" length="0" name="EsPsicologica" scale="0" sql-type="bit" ado-type="Bit" />
+          <orm:column name="EsPsicologica" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
         </orm:field>
         <orm:field name="_esDirecccion" property="EsDirecccion" behavior="readwrite" uniqueId="e5f4bd8d-471d-41d7-b58d-c74c2f0c9329" type="System.Boolean">
-          <orm:column nullable="false" length="0" name="EsDirecccion" scale="0" sql-type="bit" ado-type="Bit" />
+          <orm:column name="EsDirecccion" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
         </orm:field>
         <orm:field name="_esAcademico" property="EsAcademico" behavior="readwrite" uniqueId="ccea608e-976b-4c3f-b955-d85c3d01c674" type="System.Boolean">
-          <orm:column nullable="false" length="0" name="EsAcademico" scale="0" sql-type="bit" ado-type="Bit" />
+          <orm:column name="EsAcademico" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
         </orm:field>
         <orm:field name="_seccion" property="Seccion" behavior="readwrite" uniqueId="44469f27-cbde-4766-a02d-6083cea1e87f" type="it.dominio.Seccion">
           <orm:reference uniqueId="29f74980-2a87-44e3-818b-54281ff11d42">
@@ -540,9 +540,9 @@
         <orm:column name="Sexo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="DNI" sql-type="varchar" nullable="false" length="20" scale="0" ado-type="StringVariableLength" />
-        <orm:column nullable="false" length="0" name="EsPsicologica" scale="0" sql-type="bit" ado-type="Bit" />
-        <orm:column nullable="false" length="0" name="EsDirecccion" scale="0" sql-type="bit" ado-type="Bit" />
-        <orm:column nullable="false" length="0" name="EsAcademico" scale="0" sql-type="bit" ado-type="Bit" />
+        <orm:column name="EsPsicologica" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="EsDirecccion" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="EsAcademico" sql-type="bit" nullable="false" length="0" scale="0" ado-type="Bit" />
         <orm:constraint name="R_15" destination-table="Seccion">
           <orm:column name="CodigoSeccion" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -617,6 +617,11 @@
         </orm:constraint>
       </orm:table>
       <orm:procedure name="usp_InscripcionListar">
+        <orm:result-sets />
+      </orm:procedure>
+      <orm:procedure name="usp_EvaluacionListar">
+        <orm:procedure-parameter nullable="true" length="0" name="Tipo" scale="0" sql-type="int" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+        <orm:procedure-parameter nullable="true" length="0" name="CodigoUsuario" scale="0" sql-type="int" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
       </orm:procedure>
     </orm:schema>
@@ -1109,6 +1114,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="b7cae32d-4a3f-4d4c-b794-240e915857ff">
+      <domainMethod name="EvaluacionListar" storedProcedureName="'usp_EvaluacionListar'">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="61752c83-56fa-4c22-840e-fa60c3d2393c">
+            <domainMethodReturnShapeMoniker name="/DbContext/EvaluacionListarEntidad" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="541a9126-5c59-4149-a1f5-92d41e846ddf">
@@ -1120,6 +1134,17 @@
         <Property Id="ca728c43-63d8-4d94-97f1-12166f183285" name="FechaInscripcion" type="System.DateTime" label="FechaInscripcion : System.DateTime" fieldName="_fechaInscripcion" />
         <Property Id="1183b6cd-9079-4d39-aea8-840695c24772" name="Direccion" type="System.String" label="Direccion : System.String" fieldName="_direccion" />
         <Property Id="631a8a4b-0aac-4f3a-a839-e38a8036b3f1" name="CodigoUbigeo" type="System.String" label="CodigoUbigeo : System.String" fieldName="_codigoUbigeo" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="fed926ba-58fd-4058-bc92-9995d7462c43">
+      <domainMethodReturnShape name="EvaluacionListarEntidad" namespace="it.dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="410d3897-2afa-4ab5-8244-51f9e52b4863" name="CodigoEvaluacion" type="System.Int32" label="CodigoEvaluacion : System.Int32" fieldName="_codigoEvaluacion" />
+        <Property Id="8ef7c68d-2606-4cf2-b279-7cc1e2089ba7" name="Fecha" type="System.DateTime" label="Fecha : System.DateTime" nullable="true" fieldName="_fecha" />
+        <Property Id="6eafddf7-e57e-45df-9867-599857028d58" name="DNI" type="System.String" label="DNI : System.String" nullable="true" fieldName="_dNI" />
+        <Property Id="13f8d1ea-1af3-48e2-b003-538e3a147266" name="Alumno" type="System.String" label="Alumno : System.String" nullable="true" fieldName="_alumno" />
+        <Property Id="3b816eec-231a-4cb2-9e2c-b0619628803d" name="Evaluador" type="System.String" label="Evaluador : System.String" nullable="true" fieldName="_evaluador" />
+        <Property Id="590afea2-c948-4c07-b428-f5537c968123" name="Respuesta" type="System.String" label="Respuesta : System.String" fieldName="_respuesta" />
+        <Property Id="2ac16f68-973c-41b9-8b09-971372de103b" name="Observacion" type="System.String" label="Observacion : System.String" fieldName="_observacion" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

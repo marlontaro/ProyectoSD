@@ -171,6 +171,37 @@ namespace it.dominio
 	    	return queryResult;
 		}
 		
+		public IEnumerable<it.dominio.EvaluacionListarEntidad> EvaluacionListar(int? tipo, int? codigoUsuario)
+		{
+			OAParameter parameterTipo = new OAParameter();
+			parameterTipo.ParameterName = "Tipo";
+			if(tipo.HasValue)
+			{
+				parameterTipo.Value = tipo.Value;
+			}
+			else
+			{
+				parameterTipo.DbType = DbType.Int32;		
+				parameterTipo.Value = DBNull.Value;
+			}
+
+			OAParameter parameterCodigoUsuario = new OAParameter();
+			parameterCodigoUsuario.ParameterName = "CodigoUsuario";
+			if(codigoUsuario.HasValue)
+			{
+				parameterCodigoUsuario.Value = codigoUsuario.Value;
+			}
+			else
+			{
+				parameterCodigoUsuario.DbType = DbType.Int32;		
+				parameterCodigoUsuario.Value = DBNull.Value;
+			}
+
+			IEnumerable<it.dominio.EvaluacionListarEntidad> queryResult = this.ExecuteQuery<it.dominio.EvaluacionListarEntidad>("[usp_EvaluacionListar]", CommandType.StoredProcedure, parameterTipo, parameterCodigoUsuario);
+	        
+	    	return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -253,6 +284,8 @@ namespace it.dominio
 		}
 
 		IEnumerable<it.dominio.InscripcionListarEntidad> InscripcionListar();
+
+		IEnumerable<it.dominio.EvaluacionListarEntidad> EvaluacionListar(int? tipo, int? codigoUsuario);
 
 	}
 }

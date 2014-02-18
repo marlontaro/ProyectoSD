@@ -59,6 +59,9 @@
     <Compile Include="Evaluacion.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="EvaluacionListarEntidad.generated.cs">
+      <DependentUpon>DbContext.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Inscripcion.generated.cs">
       <DependentUpon>DbContext.rlinq</DependentUpon>
     </Compile>
