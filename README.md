@@ -13,11 +13,12 @@ Blogs:
 			- Joan Chafloque
 			  http://web-service-joan.blogspot.com/
 			- Richard Chavez - U201222528
-			
+			  
 			- Marlon Cordova
 			  http://proyectodsdupc.blogspot.com/
 			- Alfredo Contreras
 			  http://alfredocontreras.blog.com.es/
+			  http://alfredocontreras111.blogspot.es/
 			- Cesar Romero
 			  http://tips-en-net.webnode.es/
 			- Yicela Vega
