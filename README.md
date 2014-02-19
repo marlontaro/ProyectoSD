@@ -13,7 +13,7 @@ Blogs:
 			- Joan Chafloque
 			  http://web-service-joan.blogspot.com/
 			- Richard Chavez - U201222528
-			  
+			  http://dsd-rcr.blogspot.com/
 			- Marlon Cordova
 			  http://proyectodsdupc.blogspot.com/
 			- Alfredo Contreras
