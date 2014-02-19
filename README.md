@@ -10,17 +10,21 @@ Documentación:	https://docs.google.com/document/d/17C9PvcDLuJ2orb6xjINHNIKj_xz3
 
 Blogs:
 	
-			- Joan Chafloque - U201300007
+			- Joan Chafloque
+			  http://web-service-joan.blogspot.com/
 			- Richard Chavez - U201222528
-			- Marlon Cordova - http://proyectodsdupc.blogspot.com/
-			- Alfredo Contreras - U201200663
+			  
+			- Marlon Cordova
+			  http://proyectodsdupc.blogspot.com/
+			- Alfredo Contreras
 			  http://alfredocontreras.blog.com.es/
-			- Cesar Romero - http://tips-en-net.webnode.es/
-			- Yicela Vega - http://myddsupcblog.blogspot.com/
+			  http://alfredocontreras111.blogspot.es/
+			- Cesar Romero
+			  http://tips-en-net.webnode.es/
+			- Yicela Vega
+			  http://myddsupcblog.blogspot.com/
 
-	
-
-Github: 
+Github: https://github.com/marlontaro/ProyectoSD
 
 			- Joan Chafloque - U201300007
 			- Richard Chavez - U201222528
